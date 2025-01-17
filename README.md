@@ -1,4 +1,8 @@
-![image](https://github.com/user-attachments/assets/c27f7f7c-3815-4715-b8c1-4099dc465e9f)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/0404f70f-9746-4a22-971a-365075f4fdb5">
+  <img alt="Fission" src="https://github.com/user-attachments/assets/5424b4ed-0696-4ce7-8baf-8ce898a20f4f">
+</picture>
+
 
 # Fission Client
 
