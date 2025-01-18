@@ -3,6 +3,7 @@
   <img alt="Fission" src="https://github.com/user-attachments/assets/5424b4ed-0696-4ce7-8baf-8ce898a20f4f">
 </picture>
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FIterateFast-Labs%2Ffission-client&count_bg=%2300FFAE&title_bg=%239C0099&icon=&icon_color=%23000000&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
 # Fission Client
 
