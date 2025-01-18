@@ -1,25 +1,20 @@
-import { Button, Monitor, Window, WindowContent, WindowHeader } from 'react95';
+import { Button, Window, WindowContent, WindowHeader } from 'react95';
 import styled from 'styled-components';
 
-import { useTelegram } from '@/lib/hook/use-telegram';
+import { FissionMonitor } from '@/components/monitor';
 
-export function LogOnWindow() {
-  const { telegramUser } = useTelegram();
+export function LogOnWindow({ onStart }: { onStart: () => void }) {
   return (
     <WindowContainer>
       <StyledWindow>
         <WindowHeader>Log On</WindowHeader>
         <StyledWindowContent>
-          <StyledMonitor>
-            <div className="console">
-              <p className="console-text">
-                GM <br />@{telegramUser?.username}
-              </p>
-            </div>
-          </StyledMonitor>
-          <Button fullWidth size="lg" disabled>
-            Start(Coming Soon)
-          </Button>
+          <FissionMonitor />
+          <ButtonContainer>
+            <Button fullWidth size="lg" onClick={onStart}>
+              Start
+            </Button>
+          </ButtonContainer>
         </StyledWindowContent>
       </StyledWindow>
     </WindowContainer>
@@ -27,7 +22,7 @@ export function LogOnWindow() {
 }
 
 const WindowContainer = styled.div`
-  width: calc(100% - 2rem);
+  width: calc(100% - 3rem);
 `;
 
 const StyledWindow = styled(Window)`
@@ -46,22 +41,8 @@ const StyledWindowContent = styled(WindowContent)`
   padding-top: 3rem;
 `;
 
-const StyledMonitor = styled(Monitor)`
-  & .console {
-    text-align: center;
-    height: 100%;
-    background-color: black;
-    padding: 8px;
-  }
-
-  & .console-text {
-    color: white;
-    font-size: 0.8rem;
-    font-weight: bold;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    word-break: break-all;
+const ButtonContainer = styled.div`
+  & > button {
+    width: 200px;
   }
 `;
