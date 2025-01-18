@@ -17,6 +17,12 @@ importers:
 
   packages/mini-app:
     dependencies:
+      '@tanstack/react-query':
+        specifier: ^5.64.1
+        version: 5.64.1(react@18.3.1)
+      '@tanstack/react-query-devtools':
+        specifier: ^5.64.1
+        version: 5.64.1(@tanstack/react-query@5.64.1(react@18.3.1))(react@18.3.1)
       '@telegram-apps/sdk':
         specifier: ^2.5.1
         version: 2.11.3
@@ -48,6 +54,9 @@ importers:
       '@eslint/js':
         specifier: ^9.17.0
         version: 9.18.0
+      '@tanstack/eslint-plugin-query':
+        specifier: ^5.62.16
+        version: 5.62.16(eslint@9.18.0(jiti@1.21.7))(typescript@5.6.3)
       '@types/node':
         specifier: ^22.10.7
         version: 22.10.7
@@ -586,6 +595,28 @@ packages:
 
   '@swc/types@0.1.17':
     resolution: {integrity: sha512-V5gRru+aD8YVyCOMAjMpWR1Ui577DD5KSJsHP8RAxopAH22jFz6GZd/qxqjO6MJHQhcsjvjOFXyDhyLQUnMveQ==}
+
+  '@tanstack/eslint-plugin-query@5.62.16':
+    resolution: {integrity: sha512-VhnHSQ/hc62olLzGhlLJ4BJGWynwjs3cDMsByasKJ3zjW1YZ+6raxOv0gHHISm+VEnAY42pkMowmSWrXfL4NTw==}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
+
+  '@tanstack/query-core@5.64.1':
+    resolution: {integrity: sha512-978Wx4Wl4UJZbmvU/rkaM9cQtXXrbhK0lsz/UZhYIbyKYA8E4LdomTwyh2GHZ4oU0BKKoDH4YlKk2VscCUgNmg==}
+
+  '@tanstack/query-devtools@5.62.16':
+    resolution: {integrity: sha512-3ff6UBJr0H3nIhfLSl9911rvKqXf0u4B58jl0uYdDWLqPk9pCvYIbxC35cGxK2+8INl4IaFVUHb/IdgWrNkg3Q==}
+
+  '@tanstack/react-query-devtools@5.64.1':
+    resolution: {integrity: sha512-8ajcGE3wXYlb4KuJnkFYkJwJKc/qmPNTpQD7YTgLRMBPTGGp1xk7VMzxL87DoXuweO8luplUUblJJ3noVs/luQ==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.64.1
+      react: ^18 || ^19
+
+  '@tanstack/react-query@5.64.1':
+    resolution: {integrity: sha512-vW5ggHpIO2Yjj44b4sB+Fd3cdnlMJppXRBJkEHvld6FXh3j5dwWJoQo7mGtKI2RbSFyiyu/PhGAy0+Vv5ev9Eg==}
+    peerDependencies:
+      react: ^18 || ^19
 
   '@telegram-apps/bridge@1.9.2':
     resolution: {integrity: sha512-SJLcNWLXhbbZr9MiqFH/g2ceuitSJKMxUIZysK4zUNyTUNuonrQG80Q/yrO+XiNbKUj8WdDNM86NBARhuyyinQ==}
@@ -1749,6 +1780,29 @@ snapshots:
   '@swc/types@0.1.17':
     dependencies:
       '@swc/counter': 0.1.3
+
+  '@tanstack/eslint-plugin-query@5.62.16(eslint@9.18.0(jiti@1.21.7))(typescript@5.6.3)':
+    dependencies:
+      '@typescript-eslint/utils': 8.20.0(eslint@9.18.0(jiti@1.21.7))(typescript@5.6.3)
+      eslint: 9.18.0(jiti@1.21.7)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
+  '@tanstack/query-core@5.64.1': {}
+
+  '@tanstack/query-devtools@5.62.16': {}
+
+  '@tanstack/react-query-devtools@5.64.1(@tanstack/react-query@5.64.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@tanstack/query-devtools': 5.62.16
+      '@tanstack/react-query': 5.64.1(react@18.3.1)
+      react: 18.3.1
+
+  '@tanstack/react-query@5.64.1(react@18.3.1)':
+    dependencies:
+      '@tanstack/query-core': 5.64.1
+      react: 18.3.1
 
   '@telegram-apps/bridge@1.9.2':
     dependencies:
