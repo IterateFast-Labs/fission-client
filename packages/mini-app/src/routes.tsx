@@ -1,5 +1,10 @@
-import { RouterProvider, createBrowserRouter } from 'react-router';
+import {
+  RouterProvider,
+  createBrowserRouter,
+  // createMemoryRouter,
+} from 'react-router';
 
+import { ErrorBoundary } from './error';
 import { AuthRequiredRoutes } from './features/auth/routes/auth-routes';
 
 const router = createBrowserRouter([
@@ -8,6 +13,7 @@ const router = createBrowserRouter([
     lazy: async () => ({
       Component: (await import('./pages/start.page')).StartPage,
     }),
+    errorElement: <ErrorBoundary />,
   },
   {
     path: '/desktop',
@@ -20,6 +26,7 @@ const router = createBrowserRouter([
         }),
       },
     ],
+    errorElement: <ErrorBoundary />,
   },
 ]);
 
