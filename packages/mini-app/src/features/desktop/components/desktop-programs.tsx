@@ -1,6 +1,6 @@
 import { Inetcpl1318 } from '@react95/icons';
 import React, { useRef, useState } from 'react';
-import { useNavigate, useNavigation } from 'react-router';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
 import { useClickOutside } from '@/lib/hook/use-click-outside';
