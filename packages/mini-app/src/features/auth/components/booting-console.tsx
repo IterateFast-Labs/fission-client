@@ -2,14 +2,14 @@ import styled, { keyframes } from 'styled-components';
 
 import { Blink } from '@/components/blink';
 import { Timing, TimingFrame } from '@/components/timing';
-import { TelegramInitState, useTelegram } from '@/lib/hook/use-telegram';
+import { TelegramInitStatus, useTelegram } from '@/lib/hook/use-telegram';
 
 export function BootingConsole({
   onBootingConsoleEnd,
 }: {
   onBootingConsoleEnd: () => void;
 }) {
-  const { state, telegramUser, isTMA } = useTelegram();
+  const { status, telegramUser, isTMA } = useTelegram();
 
   return (
     <ConsoleContainer>
@@ -52,7 +52,7 @@ export function BootingConsole({
         </Timing>
       </TimingFrame>
 
-      <TimingFrame start={3} display={state !== TelegramInitState.Idle}>
+      <TimingFrame start={3} display={status !== TelegramInitStatus.Idle}>
         <Timing start={0} duration={0.3}>
           {!isTMA && (
             <Text>

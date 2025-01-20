@@ -51,14 +51,12 @@ export const useAuthStore = create(
 
             const expiratedDate = new Date(decoded.exp * 1000);
 
-            const a = setCookie(name, value, {
+            setCookie(name, value, {
               expires: expiratedDate, // cookie will expire at the same time as the token
               path: '/', // cookie will be accessible on all pages of the site
               secure: true, // cookie will only be sent over HTTPS
               sameSite: 'strict', // cookie will only be sent on the same site
             });
-
-            console.log('SET', a);
           } catch (error) {
             console.error('SET ERROR', error);
 
@@ -72,6 +70,18 @@ export const useAuthStore = create(
     },
   ),
 );
+
+export function checkAccessTokenExpired(accessToken: string) {
+  const decoded = jwtDecode(accessToken);
+
+  if (!decoded.exp) {
+    return true;
+  }
+
+  const expiratedDate = new Date(decoded.exp * 1000);
+
+  return expiratedDate < new Date();
+}
 
 export function safeParseStoreValue(value?: string | null) {
   if (!value) {
@@ -87,15 +97,7 @@ export function safeParseStoreValue(value?: string | null) {
       return null;
     }
 
-    const decoded = jwtDecode(accessToken);
-
-    if (!decoded.exp) {
-      return null;
-    }
-
-    const expiratedDate = new Date(decoded.exp * 1000);
-
-    if (expiratedDate < new Date()) {
+    if (checkAccessTokenExpired(accessToken)) {
       return null;
     }
 

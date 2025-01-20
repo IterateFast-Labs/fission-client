@@ -7,7 +7,7 @@ import {
 } from '@telegram-apps/sdk';
 import { useEffect, useRef, useState } from 'react';
 
-export enum TelegramInitState {
+export enum TelegramInitStatus {
   'Idle' = 'Idle',
   'Pending' = 'Pending',
   'Success' = 'Success',
@@ -20,22 +20,24 @@ export function useTelegram() {
   const launchParams = useRef<LaunchParams>(undefined);
   const [user, setUser] = useState<User>();
 
-  const [state, setState] = useState<TelegramInitState>(TelegramInitState.Idle);
+  const [status, setStatus] = useState<TelegramInitStatus>(
+    TelegramInitStatus.Idle,
+  );
 
   useEffect(() => {
-    setState(TelegramInitState.Pending);
+    setStatus(TelegramInitStatus.Pending);
     setLoading(true);
 
     try {
       const params = retrieveLaunchParams();
       launchParams.current = params;
       setIsTMA(true);
-      setState(TelegramInitState.Success);
+      setStatus(TelegramInitStatus.Success);
       setUser(params.initData?.user);
     } catch (error: unknown) {
       if (error instanceof TypedError) {
         if (error.type === ERR_RETRIEVE_LP_FAILED) {
-          setState(TelegramInitState.Failed);
+          setStatus(TelegramInitStatus.Failed);
           setIsTMA(false);
         }
       }
@@ -49,7 +51,7 @@ export function useTelegram() {
   }, []);
 
   return {
-    state,
+    status,
     isTMA,
     launchParams: launchParams.current,
     telegramUser: user,

@@ -1,14 +1,19 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router';
 
+import {
+  checkAccessTokenExpired,
+  useAuthStore,
+} from '@/global-state/auth-store';
+
 export function AuthRequiredRoutes() {
   const navigate = useNavigate();
+  const { accessToken } = useAuthStore();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const isTokenValid = Boolean(token); // TODO: validate token
+    const isTokenExpired = !accessToken || checkAccessTokenExpired(accessToken);
 
-    if (!isTokenValid) {
+    if (isTokenExpired) {
       navigate('/');
     }
   }, []);
