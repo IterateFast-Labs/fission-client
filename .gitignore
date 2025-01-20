@@ -19,3 +19,5 @@ dist-ssr
 .env.production.local
 .env.prodution
 .env.development
+
+internal
