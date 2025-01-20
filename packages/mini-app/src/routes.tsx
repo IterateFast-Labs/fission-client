@@ -1,13 +1,15 @@
 import {
+  RouteObject,
   RouterProvider,
   createBrowserRouter,
+  createMemoryRouter,
   // createMemoryRouter,
 } from 'react-router';
 
 import { ErrorBoundary } from './error';
 import { AuthRequiredRoutes } from './features/auth/routes/auth-routes';
 
-const router = createBrowserRouter([
+const routeList: RouteObject[] = [
   {
     path: '/',
     lazy: async () => ({
@@ -28,7 +30,12 @@ const router = createBrowserRouter([
     ],
     errorElement: <ErrorBoundary />,
   },
-]);
+];
+
+const router =
+  import.meta.env.VITE_ENVIRONMENT === 'development'
+    ? createMemoryRouter(routeList)
+    : createBrowserRouter(routeList);
 
 export function Routes() {
   return <RouterProvider router={router} />;

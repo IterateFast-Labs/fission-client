@@ -20,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: normal;
   }
 
-  body, input, select, textarea {
+  body, input, select, textarea, button {
     font-family: "UnifontExMono", sans-serif;
   }
 
