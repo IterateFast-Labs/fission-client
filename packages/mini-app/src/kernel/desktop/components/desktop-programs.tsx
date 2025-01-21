@@ -14,12 +14,12 @@ export function DesktopPrograms() {
       <Program
         icon={<Inetcpl1318 width={48} height={48} />}
         label={'WeLabel'}
-        onClick={() => navigate('/apps/we-label')}
+        onClick={() => navigate('/application/we-label')}
       />
       <Program
         icon={<img src="/catchme.svg" width={48} height={48} />}
         label={'Catch Me'}
-        onClick={() => navigate('/apps/catch-me')}
+        onClick={() => navigate('/application/catch-me')}
       />
     </StyledList>
   );
@@ -81,7 +81,7 @@ const StyledListItem = styled.button`
   flex-direction: column;
   cursor: pointer;
   border: 2px dotted transparent;
-  width: 90px;
+  width: 100px;
   height: fit-content;
 
   &:disabled {
@@ -98,9 +98,8 @@ const StyledListItem = styled.button`
   }
 
   .label {
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: white;
-    max-width: 120px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;

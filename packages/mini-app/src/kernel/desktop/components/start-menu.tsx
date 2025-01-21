@@ -1,4 +1,4 @@
-import { Computer3 } from '@react95/icons';
+import { Computer3, Inetcpl1318 } from '@react95/icons';
 import { useRef, useState } from 'react';
 import { Button, MenuList, MenuListItem, Separator } from 'react95';
 import { useNavigate } from 'react-router';
@@ -20,6 +20,11 @@ export function StartMenu() {
     navigate('/');
   };
 
+  const handleClickMenu = (callback: () => void) => {
+    setStartMenuOpen(false);
+    callback();
+  };
+
   return (
     <div ref={listRef}>
       <StyledStartMenu onClick={() => setStartMenuOpen((prev) => !prev)}>
@@ -29,9 +34,21 @@ export function StartMenu() {
       {isStartMenuOpen && (
         <StyledMenuList>
           <div className="main">
-            <StyledMenuListItem onClick={handleShutDown}>
-              <Computer3 width={32} height={32} />
-              <span>Catch</span>
+            <StyledMenuListItem
+              onClick={() =>
+                handleClickMenu(() => navigate('/application/we-label'))
+              }
+            >
+              <Inetcpl1318 width={32} height={32} />
+              <span>WeLabel</span>
+            </StyledMenuListItem>
+            <StyledMenuListItem
+              onClick={() =>
+                handleClickMenu(() => navigate('/application/catch-me'))
+              }
+            >
+              <img src="/catchme.svg" width={32} height={32} />
+              <span>Catch Me</span>
             </StyledMenuListItem>
           </div>
           <div className="bottom">

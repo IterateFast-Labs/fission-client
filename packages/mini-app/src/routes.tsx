@@ -7,7 +7,7 @@ import {
 } from 'react-router';
 
 import { ErrorBoundary } from './error';
-import { AuthRequiredRoutes } from './features/auth/routes/auth-routes';
+import { AuthRequiredRoutes } from './kernel/auth/routes/auth-routes';
 
 const routeList: RouteObject[] = [
   {
@@ -29,6 +29,26 @@ const routeList: RouteObject[] = [
       },
     ],
     errorElement: <ErrorBoundary />,
+  },
+  {
+    path: '/application',
+    element: <AuthRequiredRoutes />,
+    children: [
+      {
+        path: '/application/we-label',
+        lazy: async () => ({
+          Component: (await import('./pages/application/we-label.page'))
+            .WeLabelAppPage,
+        }),
+      },
+      {
+        path: '/application/catch-me',
+        lazy: async () => ({
+          Component: (await import('./pages/application/catch-me.page'))
+            .CatchMeAppPage,
+        }),
+      },
+    ],
   },
 ];
 

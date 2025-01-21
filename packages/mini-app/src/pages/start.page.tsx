@@ -3,9 +3,9 @@ import { Hourglass } from 'react95';
 
 import { RootContainer } from '@/components/layout';
 import { Timing, TimingFrame } from '@/components/timing';
-import { BootingConsole } from '@/features/auth/components/booting-console';
-import { LogOnWindow } from '@/features/auth/components/log-on-window';
 import { useSettingStore } from '@/global-state/setting-store';
+import { BootingConsole } from '@/kernel/auth/components/booting-console';
+import { LogOnWindow } from '@/kernel/auth/components/log-on-window';
 
 import { CenterContainer, Dimmer, PageContainer } from './start.style';
 
