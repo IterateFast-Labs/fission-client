@@ -16,11 +16,6 @@ export function DesktopPrograms() {
         label={'WeLabel'}
         onClick={() => navigate('/application/we-label')}
       />
-      <Program
-        icon={<img src="/catchme.svg" width={48} height={48} />}
-        label={'Catch Me'}
-        onClick={() => navigate('/application/catch-me')}
-      />
     </StyledList>
   );
 }

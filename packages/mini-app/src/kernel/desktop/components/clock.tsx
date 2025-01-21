@@ -23,7 +23,7 @@ export function Clock() {
 
   return (
     <StyledFrame variant="status">
-      <p ref={ref}></p>
+      <p ref={ref}>0:00 PM</p>
     </StyledFrame>
   );
 }

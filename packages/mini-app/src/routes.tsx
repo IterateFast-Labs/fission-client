@@ -2,10 +2,11 @@ import {
   RouteObject,
   RouterProvider,
   createBrowserRouter,
-  createMemoryRouter,
+  // createMemoryRouter,
   // createMemoryRouter,
 } from 'react-router';
 
+import { applicationRoutes } from './applications/routes';
 import { ErrorBoundary } from './error';
 import { AuthRequiredRoutes } from './kernel/auth/routes/auth-routes';
 
@@ -13,7 +14,7 @@ const routeList: RouteObject[] = [
   {
     path: '/',
     lazy: async () => ({
-      Component: (await import('./pages/start.page')).StartPage,
+      Component: (await import('./kernel/pages/start.page')).StartPage,
     }),
     errorElement: <ErrorBoundary />,
   },
@@ -24,7 +25,7 @@ const routeList: RouteObject[] = [
       {
         path: '/desktop',
         lazy: async () => ({
-          Component: (await import('./pages/desktop.page')).DesktopPage,
+          Component: (await import('./kernel/pages/desktop.page')).DesktopPage,
         }),
       },
     ],
@@ -33,28 +34,13 @@ const routeList: RouteObject[] = [
   {
     path: '/application',
     element: <AuthRequiredRoutes />,
-    children: [
-      {
-        path: '/application/we-label',
-        lazy: async () => ({
-          Component: (await import('./pages/application/we-label.page'))
-            .WeLabelAppPage,
-        }),
-      },
-      {
-        path: '/application/catch-me',
-        lazy: async () => ({
-          Component: (await import('./pages/application/catch-me.page'))
-            .CatchMeAppPage,
-        }),
-      },
-    ],
+    children: [...applicationRoutes],
   },
 ];
 
 const router =
   import.meta.env.VITE_ENVIRONMENT === 'development'
-    ? createMemoryRouter(routeList)
+    ? createBrowserRouter(routeList)
     : createBrowserRouter(routeList);
 
 export function Routes() {

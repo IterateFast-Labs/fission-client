@@ -42,14 +42,6 @@ export function StartMenu() {
               <Inetcpl1318 width={32} height={32} />
               <span>WeLabel</span>
             </StyledMenuListItem>
-            <StyledMenuListItem
-              onClick={() =>
-                handleClickMenu(() => navigate('/application/catch-me'))
-              }
-            >
-              <img src="/catchme.svg" width={32} height={32} />
-              <span>Catch Me</span>
-            </StyledMenuListItem>
           </div>
           <div className="bottom">
             <Separator />
