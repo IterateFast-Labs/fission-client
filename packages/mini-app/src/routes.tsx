@@ -2,8 +2,7 @@ import {
   RouteObject,
   RouterProvider,
   createBrowserRouter,
-  // createMemoryRouter,
-  // createMemoryRouter,
+  createMemoryRouter,
 } from 'react-router';
 
 import { applicationRoutes } from './applications/routes';
@@ -40,7 +39,7 @@ const routeList: RouteObject[] = [
 
 const router =
   import.meta.env.VITE_ENVIRONMENT === 'development'
-    ? createBrowserRouter(routeList)
+    ? createMemoryRouter(routeList)
     : createBrowserRouter(routeList);
 
 export function Routes() {

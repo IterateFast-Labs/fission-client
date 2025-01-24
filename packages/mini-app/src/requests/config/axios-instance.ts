@@ -2,8 +2,6 @@ import axios from 'axios';
 
 import { useAuthStore } from '@/global-state/auth-store';
 
-console.log(import.meta.env);
-
 export const client = axios.create({
   baseURL: import.meta.env.VITE_API_HOST,
   headers: {

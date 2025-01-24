@@ -1,9 +1,10 @@
-import { Computer3, Inetcpl1318 } from '@react95/icons';
+import { Computer3 } from '@react95/icons';
 import { useRef, useState } from 'react';
 import { Button, MenuList, MenuListItem, Separator } from 'react95';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
+import tayCharacter from '@/applications/tay/assets/tay.svg';
 import { LogoImage } from '@/components/logo';
 import { useAuthStore } from '@/global-state/auth-store';
 import { useClickOutside } from '@/lib/hook/use-click-outside';
@@ -39,8 +40,8 @@ export function StartMenu() {
                 handleClickMenu(() => navigate('/application/we-label'))
               }
             >
-              <Inetcpl1318 width={32} height={32} />
-              <span>WeLabel</span>
+              <img src={tayCharacter} width={32} height={32} />
+              <span>Tay</span>
             </StyledMenuListItem>
           </div>
           <div className="bottom">

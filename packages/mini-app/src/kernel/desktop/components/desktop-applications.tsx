@@ -1,33 +1,24 @@
-import { Inetcpl1318 } from '@react95/icons';
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
+import tayCharacter from '@/applications/tay/assets/tay.svg';
 import { useClickOutside } from '@/lib/hook/use-click-outside';
 import { sleep } from '@/lib/utils/sleep';
 
-export function DesktopPrograms() {
+export function DesktopApplications() {
   const navigate = useNavigate();
 
   return (
     <StyledList>
       <Program
-        icon={<Inetcpl1318 width={48} height={48} />}
-        label={'WeLabel'}
-        onClick={() => navigate('/application/we-label')}
+        icon={<img src={tayCharacter} width={64} height={64} />}
+        label={'Tay'}
+        onClick={() => navigate('/application/tay')}
       />
     </StyledList>
   );
 }
-
-const StyledList = styled.div`
-  padding: 1rem;
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-`;
 
 function Program({
   icon,
@@ -47,7 +38,7 @@ function Program({
 
   const handleClick = async () => {
     setClicked(true);
-    await sleep(1);
+    await sleep(0.5);
     onClick();
   };
 
@@ -61,10 +52,18 @@ function Program({
     >
       <div className="icon">{icon}</div>
       <p className="label">{label}</p>
-      <img className="active" src="/blue-active.svg" />
     </StyledListItem>
   );
 }
+
+const StyledList = styled.div`
+  padding: 1rem;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+`;
 
 const StyledListItem = styled.button`
   position: relative;
@@ -72,11 +71,10 @@ const StyledListItem = styled.button`
   background: transparent;
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
   flex-direction: column;
   cursor: pointer;
-  border: 2px dotted transparent;
-  width: 100px;
+  width: fit-content;
   height: fit-content;
 
   &:disabled {
@@ -88,8 +86,8 @@ const StyledListItem = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
   }
 
   .label {
@@ -103,23 +101,6 @@ const StyledListItem = styled.button`
     padding: 1px 4px;
     border: 2px dotted transparent;
     text-align: center;
-  }
-
-  & .active {
-    display: none;
-    z-index: 2;
-  }
-
-  &.clicked .active {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 48px;
-    mix-blend-mode: invert;
-
-    opacity: 1;
   }
 
   &.clicked .label {

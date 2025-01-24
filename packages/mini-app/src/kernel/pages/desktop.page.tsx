@@ -2,7 +2,7 @@ import { AppBar, Toolbar } from 'react95';
 
 import { RootContainer } from '@/components/layout';
 import { Clock } from '@/kernel/desktop/components/clock';
-import { DesktopPrograms } from '@/kernel/desktop/components/desktop-programs';
+import { DesktopApplications } from '@/kernel/desktop/components/desktop-applications';
 import {
   DesktopBottom,
   DesktopLayout,
@@ -15,7 +15,7 @@ export function DesktopPage() {
     <RootContainer>
       <DesktopLayout>
         <DesktopMain>
-          <DesktopPrograms />
+          <DesktopApplications />
         </DesktopMain>
         <DesktopBottom>
           <AppBar position="relative">
