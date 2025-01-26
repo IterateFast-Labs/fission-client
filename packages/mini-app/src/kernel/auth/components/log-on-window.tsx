@@ -43,14 +43,21 @@ export function LogOnWindow() {
         <StyledWindowContent>
           <FissionMonitor />
           <ButtonContainer>
-            <Button fullWidth size="lg" onClick={handleStart}>
-              Start
+            <Button
+              fullWidth
+              size="lg"
+              onClick={handleStart}
+              disabled={telegramInitStatus !== TelegramInitStatus.Success}
+            >
+              {telegramInitStatus === TelegramInitStatus.Success
+                ? 'Start'
+                : 'Please open at Telegram'}
             </Button>
             <SubAction>
               <Checkbox
                 checked={skipBootConsole}
                 onChange={() => setSkipBootConsole(!skipBootConsole)}
-                label={'Fast boot'}
+                label={'Fast boot next time'}
               ></Checkbox>
             </SubAction>
           </ButtonContainer>
@@ -89,7 +96,7 @@ const StyledWindowContent = styled(WindowContent)`
 
 const ButtonContainer = styled.div`
   & > button {
-    width: 200px;
+    width: 230px;
   }
 `;
 
