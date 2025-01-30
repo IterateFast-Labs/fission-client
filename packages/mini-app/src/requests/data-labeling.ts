@@ -22,6 +22,7 @@ export function usePlayableDataset() {
 }
 
 export interface DatasetDetail {
+  campaignId: string;
   id: string;
   title: string;
   type: string;
@@ -42,9 +43,9 @@ export interface DatasetDetail {
   dataSetOption: {
     id: string;
     dataSetId: string;
-    option1: string;
-    option2: string;
-    option3: string;
+    option1: string | null;
+    option2: string | null;
+    option3: string | null;
     option4: string | null;
     createdAt: string;
     updatedAt: string;
@@ -53,11 +54,10 @@ export interface DatasetDetail {
 
 export async function getDatasetDetail(datasetId: string) {
   const { data } = await client.get<DatasetDetail>(`/dataset/${datasetId}`);
-
   return Object.freeze(data);
 }
 
-export function useDatasetDetail(datasetId: string) {
+export function useDatasetDetail({ datasetId }: { datasetId: string }) {
   const accessToken = useAuthStore((state) => state.accessToken);
   const query = useQuery({
     queryKey: ['dataset', datasetId, accessToken],
@@ -76,16 +76,17 @@ export enum InputOption {
 }
 
 export async function determineDatasetOption({
-  dataSetId,
+  datasetId,
   option,
   campaignId,
 }: {
-  dataSetId: string;
+  datasetId: string;
   option: InputOption;
   campaignId: string;
 }) {
   const { data } = await client.post<{ point: number }>(`/dataLabeling`, {
-    dataSetId,
+    // TODO: need to change DTO to `datasetId`
+    dataSetId: datasetId,
     inputOption: option,
     campaignId,
   });
@@ -93,10 +94,14 @@ export async function determineDatasetOption({
   return data;
 }
 
-export function useDetermineDatasetOption() {
+export function useDetermineDatasetOption({
+  datasetId,
+}: {
+  datasetId?: string;
+}) {
   return useMutation({
     mutationFn: determineDatasetOption,
-    mutationKey: ['dataset', 'determine'],
+    mutationKey: ['dataset', 'determine', datasetId],
   });
 }
 
@@ -112,11 +117,13 @@ export interface AgentWithCampaign {
 }
 
 export async function getAgentCampainId({ agentType }: { agentType: string }) {
-  const { data } = await client.get<{
+  const {
+    data: { id },
+  } = await client.get<{
     id: string;
   }>(`/dataset/agent/${agentType}`);
 
-  return Object.freeze(data);
+  return Object.freeze(id);
 }
 
 export function useAgentCampainId({ agentType }: { agentType: string }) {

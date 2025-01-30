@@ -69,6 +69,7 @@ const ToastBox = styled.div<{ $duration: number }>`
     border: 1px solid #ffffe1;
     box-sizing: content-box;
     padding: 0 20px 0 3px;
+    white-space: pre-line;
   }
 `;
 

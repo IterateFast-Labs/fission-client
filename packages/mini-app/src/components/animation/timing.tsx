@@ -47,6 +47,7 @@ export const Timing = styled(
     start: number; // second
     duration: number; // second
     blank?: boolean;
+    fullWidth?: boolean;
   }) => {
     const wrappedOnAnimationEnd = (
       event: React.AnimationEvent<HTMLDivElement>,
@@ -69,6 +70,7 @@ export const Timing = styled(
   start: number; // second
   duration: number; // second
   blank?: boolean;
+  fullWidth?: boolean;
 }>`
   opacity: 0;
   animation-name: ${fadeIn};
@@ -77,4 +79,5 @@ export const Timing = styled(
   animation-timing-function: steps(1, end);
   animation-fill-mode: forwards;
   ${(props) => props.blank && 'height: 1rem;'}
+  ${(props) => props.fullWidth && 'width: 100%;'}
 `;

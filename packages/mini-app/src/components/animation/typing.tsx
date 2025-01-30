@@ -1,15 +1,21 @@
-import React, { ComponentPropsWithRef, useRef } from 'react';
+import React, {
+  ComponentPropsWithRef,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import styled, { keyframes } from 'styled-components';
 
 interface TypingProps extends ComponentPropsWithRef<'p'> {
   delayPerChar?: number;
   animationPlayState?: 'running' | 'paused';
+  onAnimationEnd?: () => void;
 }
 
 export function Typing({
   children,
   ref,
-  delayPerChar = 0.01,
+  delayPerChar = 0.02,
   animationPlayState = 'running',
   onAnimationEnd,
   ...props
@@ -68,24 +74,39 @@ export function Typing({
     }
   }
 
+  // animation skipped
+  const [skipped, setSkipped] = useState(false);
+
   // ref to keep track of the animation end count
   const count = useRef(animationEndCount);
 
-  const handleAnimationEnd = (
-    event: React.AnimationEvent<HTMLParagraphElement>,
-  ) => {
+  const handleAnimationEnd = () => {
     count.current -= 1;
 
     if (count.current === 0 && onAnimationEnd) {
-      onAnimationEnd(event);
+      onAnimationEnd();
     }
   };
+
+  useEffect(() => {
+    const handleClick = () => {
+      setSkipped(true);
+      onAnimationEnd?.();
+    };
+
+    window.addEventListener('click', handleClick);
+
+    return () => {
+      window.removeEventListener('click', handleClick);
+    };
+  }, []);
 
   return (
     <StyledParagraph
       ref={ref}
       $delayPerChar={delayPerChar}
       $animationPlayState={animationPlayState}
+      $skipped={skipped}
       onAnimationEnd={handleAnimationEnd}
       {...props}
     >
@@ -108,15 +129,16 @@ const typing = keyframes`
 const StyledParagraph = styled.p<{
   $delayPerChar?: number;
   $animationPlayState?: 'running' | 'paused';
+  $skipped?: boolean;
 }>`
   .char {
     display: inline;
     position: relative;
 
-    opacity: 0;
+    opacity: ${(props) => (props.$skipped ? 1 : 0)};
     min-width: 0;
 
-    animation-name: ${typing};
+    animation-name: ${(props) => (props.$skipped ? 'none' : typing)};
 
     animation-duration: 0;
     animation-play-state: ${(props) => props.$animationPlayState};

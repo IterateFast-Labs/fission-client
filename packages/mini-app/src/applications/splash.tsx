@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 import styled from 'styled-components';
 
 import { Timing } from '@/components/animation/timing';
@@ -44,8 +45,14 @@ export function withSplash<P>(
   onLoading?: () => Promise<void>,
 ) {
   return function (props: P & React.Attributes) {
-    const [loaded, setLoaded] = useState(false);
-    const [splashVisible, setSplashVisible] = useState(true);
+    const location = useLocation();
+    const sessionStorageKey = `@fission/splash[${location.pathname}]`;
+
+    const alreadyShownSplash =
+      sessionStorage.getItem(sessionStorageKey) === 'true';
+
+    const [loaded, setLoaded] = useState(alreadyShownSplash);
+    const [splashVisible, setSplashVisible] = useState(!alreadyShownSplash);
 
     const onLoadingWithSleep = async () => {
       if (typeof onLoading === 'function') {
@@ -57,6 +64,8 @@ export function withSplash<P>(
       setSplashVisible(false);
 
       await sleep(FADE_OUT_DURATION_SECOND);
+
+      sessionStorage.setItem(sessionStorageKey, 'true');
     };
 
     useEffect(() => {
