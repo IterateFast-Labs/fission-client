@@ -1,4 +1,5 @@
 import { Dialmon200 } from '@react95/icons';
+import { useCallback } from 'react';
 import { Button, Checkbox, Window, WindowContent, WindowHeader } from 'react95';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
@@ -6,6 +7,7 @@ import styled from 'styled-components';
 import { FissionMonitor } from '@/components/monitor';
 import { useAuthStore } from '@/global-state/auth-store';
 import { useSettingStore } from '@/global-state/setting-store';
+import { useToastStore } from '@/global-state/toast-store';
 import { TelegramInitStatus, useTelegram } from '@/lib/hook/use-telegram';
 import { useLoginWithTelegram } from '@/requests/auth-telegram';
 
@@ -15,6 +17,8 @@ export function LogOnWindow() {
   const navigate = useNavigate();
   const { mutateAsync } = useLoginWithTelegram();
   const { telegramUser, status: telegramInitStatus } = useTelegram();
+  const { pushToast } = useToastStore();
+
   const handleStart = async () => {
     if (telegramInitStatus !== TelegramInitStatus.Success) {
       alert('Please login with Telegram first');
@@ -33,6 +37,22 @@ export function LogOnWindow() {
 
     navigate('/desktop');
   };
+
+  const handleSkipBootConsole = useCallback(() => {
+    const prev = skipBootConsole;
+    setSkipBootConsole(!prev);
+
+    pushToast({
+      id: `skip-boot-console-${prev ? 'off' : 'on'}`,
+      message: (
+        <>
+          Next time, <br />
+          the boot screen will {prev ? '' : <u>NOT</u>} be displayed.
+        </>
+      ),
+    });
+  }, [skipBootConsole]);
+
   return (
     <WindowContainer>
       <StyledWindow>
@@ -56,8 +76,8 @@ export function LogOnWindow() {
             <SubAction>
               <Checkbox
                 checked={skipBootConsole}
-                onChange={() => setSkipBootConsole(!skipBootConsole)}
-                label={'Fast boot next time'}
+                onChange={handleSkipBootConsole}
+                label={'Fast boot'}
               ></Checkbox>
             </SubAction>
           </ButtonContainer>

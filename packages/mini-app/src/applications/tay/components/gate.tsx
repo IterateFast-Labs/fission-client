@@ -3,7 +3,11 @@ import styled from 'styled-components';
 
 import tayTalkingImage from '../assets/tay-talking.webp';
 
-export function Gate() {
+export function Gate({
+  onStart,
+}: {
+  onStart: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}) {
   return (
     <GateContainer>
       <div className="content">
@@ -32,8 +36,8 @@ export function Gate() {
 
       <div className="action">
         <p>Please teach TAY how to talk</p>
-        <Button fullWidth size="lg" disabled>
-          Start (Coming soon)
+        <Button fullWidth size="lg" onClick={onStart}>
+          Start
         </Button>
       </div>
     </GateContainer>

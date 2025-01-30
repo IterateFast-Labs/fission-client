@@ -5,6 +5,7 @@ import {
 } from 'react95';
 import styled from 'styled-components';
 
+// TODO: Replace all header in window with this component
 export function WindowHeader({
   icon,
   headerTitle,
@@ -42,8 +43,8 @@ export const WindowCloseButton = styled((props: ButtonProps) => {
   return (
     <Button {...props} square variant="default">
       <svg
-        width="16"
-        height="14"
+        width={props.size === 'sm' ? '8' : '16'}
+        height={props.size === 'sm' ? '7' : '14'}
         viewBox="0 0 8 7"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -23,6 +23,9 @@ enum STEP {
 function TayAppPage() {
   const navigate = useNavigate();
   const [step, setStep] = useState<STEP>(STEP.GATE);
+
+  const handleStart = () => {};
+
   return (
     <RootContainer>
       <PageContainer>
@@ -41,7 +44,7 @@ function TayAppPage() {
             <WindowCloseButton onClick={() => navigate('/desktop')} />
           </StyledHeader>
           <StyledContent>
-            {step === STEP.GATE && <Gate />}
+            {step === STEP.GATE && <Gate onStart={handleStart} />}
             {step === STEP.LABEL && (
               <div>
                 <button onClick={() => setStep(STEP.RESULT)}>Result</button>

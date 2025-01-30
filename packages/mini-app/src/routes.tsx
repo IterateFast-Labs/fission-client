@@ -1,9 +1,4 @@
-import {
-  RouteObject,
-  RouterProvider,
-  createBrowserRouter,
-  createMemoryRouter,
-} from 'react-router';
+import { RouteObject, RouterProvider, createBrowserRouter } from 'react-router';
 
 import { applicationRoutes } from './applications/routes';
 import { ErrorBoundary } from './error';
@@ -37,10 +32,11 @@ const routeList: RouteObject[] = [
   },
 ];
 
-const router =
-  import.meta.env.VITE_ENVIRONMENT === 'development'
-    ? createMemoryRouter(routeList)
-    : createBrowserRouter(routeList);
+// const router =
+//   import.meta.env.VITE_ENVIRONMENT === 'development'
+//     ? createBrowserRouter(routeList)
+//     : createBrowserRouter(routeList);
+const router = createBrowserRouter(routeList);
 
 export function Routes() {
   return <RouterProvider router={router} />;

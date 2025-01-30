@@ -1,12 +1,13 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export function TanstackQueryProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { VITE_ENVIRONMENT } = import.meta.env;
+  // const { VITE_ENVIRONMENT } = import.meta.env;
 
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -19,9 +20,9 @@ export function TanstackQueryProvider({
 
   return (
     <QueryClientProvider client={queryClient}>
-      {VITE_ENVIRONMENT === 'development' && (
+      {/* {VITE_ENVIRONMENT === 'development' && (
         <ReactQueryDevtools initialIsOpen={false} />
-      )}
+      )} */}
       {children}
     </QueryClientProvider>
   );

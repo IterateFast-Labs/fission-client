@@ -37,7 +37,7 @@ export function StartMenu() {
           <div className="main">
             <StyledMenuListItem
               onClick={() =>
-                handleClickMenu(() => navigate('/application/we-label'))
+                handleClickMenu(() => navigate('/application/tay'))
               }
             >
               <img src={tayCharacter} width={32} height={32} />
@@ -79,4 +79,8 @@ const StyledMenuList = styled(MenuList)`
 const StyledMenuListItem = styled(MenuListItem)`
   justify-content: flex-start;
   gap: 0.5rem;
+
+  img {
+    image-rendering: pixelated;
+  }
 `;
