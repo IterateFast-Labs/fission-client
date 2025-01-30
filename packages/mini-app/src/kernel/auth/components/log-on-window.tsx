@@ -1,10 +1,11 @@
-import { Dialmon200 } from '@react95/icons';
+import { Inetcpl1305 } from '@react95/icons';
 import { useCallback } from 'react';
-import { Button, Checkbox, Window, WindowContent, WindowHeader } from 'react95';
+import { Button, Checkbox, Window, WindowContent } from 'react95';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
 import { FissionMonitor } from '@/components/monitor';
+import { WindowHeader } from '@/components/react95/window';
 import { useAuthStore } from '@/global-state/auth-store';
 import { useSettingStore } from '@/global-state/setting-store';
 import { useToastStore } from '@/global-state/toast-store';
@@ -56,10 +57,11 @@ export function LogOnWindow() {
   return (
     <WindowContainer>
       <StyledWindow>
-        <StyledWindowHeader>
-          <Dialmon200 width={24} />
-          Log On
-        </StyledWindowHeader>
+        <WindowHeader
+          icon={<Inetcpl1305 variant="16x16_4" width={16} />}
+          headerTitle="Log On"
+          button={null}
+        />
         <StyledWindowContent>
           <FissionMonitor />
           <ButtonContainer>
@@ -97,13 +99,6 @@ const StyledWindow = styled(Window)`
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
-`;
-
-const StyledWindowHeader = styled(WindowHeader)`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.5rem;
 `;
 
 const StyledWindowContent = styled(WindowContent)`

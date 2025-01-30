@@ -5,7 +5,6 @@ import {
 } from 'react95';
 import styled from 'styled-components';
 
-// TODO: Replace all header in window with this component
 export function WindowHeader({
   icon,
   headerTitle,
@@ -15,20 +14,17 @@ export function WindowHeader({
   headerTitle: string;
   button: React.ReactNode;
 }) {
+  const isIconExist = Boolean(icon);
+  const isHeaderTitleExist = Boolean(headerTitle);
+  const isButtonExist = Boolean(button);
+
   return (
     <StyledHeader>
-      <div
-        style={{
-          display: 'flex',
-          overflow: 'hidden',
-          alignItems: 'center',
-          gap: '4px',
-        }}
-      >
-        {icon}
-        {headerTitle}
+      <div className="header">
+        {isIconExist && <div className="icon">{icon}</div>}
+        {isHeaderTitleExist && <div className="title">{headerTitle}</div>}
       </div>
-      <div>{button}</div>
+      {isButtonExist && <div className="button">{button}</div>}
     </StyledHeader>
   );
 }
@@ -37,6 +33,43 @@ const StyledHeader = styled(WindowHeaderOriginal)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
+  padding: 1px 1px 1px 0.25rem;
+
+  .header {
+    display: flex;
+    overflow: hidden;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .title {
+    line-height: 1rem;
+    margin-top: -0.25rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .button {
+    height: 28px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    flex-shrink: 0;
+  }
 `;
 
 export const WindowCloseButton = styled((props: ButtonProps) => {

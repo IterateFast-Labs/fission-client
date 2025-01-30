@@ -59,7 +59,6 @@ export function StartMenu() {
 
 const StyledStartMenu = styled(Button)`
   gap: 0.5rem;
-  font-weight: bold;
 `;
 
 const StyledMenuList = styled(MenuList)`

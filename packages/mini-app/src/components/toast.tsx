@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 import { useToastStore } from '@/global-state/toast-store';
 
-import { WindowCloseButton } from './window';
+import { WindowCloseButton } from './react95/window';
 
 export interface ToastProps {
   id: string;

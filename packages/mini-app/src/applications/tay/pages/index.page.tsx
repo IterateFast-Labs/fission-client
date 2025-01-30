@@ -1,18 +1,14 @@
+import { Chatshow3000 } from '@react95/icons';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
 import { withSplash } from '@/applications/splash';
 import tayCharacter from '@/applications/tay/assets/tay.svg';
 import { RootContainer } from '@/components/layout';
-import { WindowCloseButton } from '@/components/window';
+import { WindowCloseButton, WindowHeader } from '@/components/react95/window';
 
 import { Gate } from '../components/gate';
-import {
-  PageContainer,
-  StyledContent,
-  StyledHeader,
-  StyledWindow,
-} from './index.style';
+import { PageContainer, StyledContent, StyledWindow } from './index.style';
 
 enum STEP {
   GATE = 'GATE',
@@ -30,19 +26,12 @@ function TayAppPage() {
     <RootContainer>
       <PageContainer>
         <StyledWindow>
-          <StyledHeader>
-            <span
-              style={{
-                display: 'flex',
-                overflow: 'hidden',
-                alignItems: 'center',
-                gap: '4px',
-              }}
-            >
-              Tay
-            </span>
-            <WindowCloseButton onClick={() => navigate('/desktop')} />
-          </StyledHeader>
+          <WindowHeader
+            icon={<Chatshow3000 variant="16x16_4" width={16} height={16} />}
+            headerTitle="Tay"
+            button={<WindowCloseButton onClick={() => navigate('/desktop')} />}
+          />
+
           <StyledContent>
             {step === STEP.GATE && <Gate onStart={handleStart} />}
             {step === STEP.LABEL && (
