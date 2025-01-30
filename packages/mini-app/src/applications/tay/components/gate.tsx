@@ -1,11 +1,15 @@
 import { Button, Frame } from 'react95';
 import styled from 'styled-components';
 
+import { Typing } from '@/components/animation/typing';
+
 import tayTalkingImage from '../assets/tay-talking.webp';
 
 export function Gate({
+  appLoaded,
   onStart,
 }: {
+  appLoaded: boolean;
   onStart: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }) {
   return (
@@ -13,16 +17,19 @@ export function Gate({
       <div className="content">
         <Poster variant="field">
           <Bubble className="bubble">
-            <p
+            <Typing
+              animationPlayState={appLoaded ? 'running' : 'paused'}
               className="message"
               style={{
                 textWrap: 'balance',
               }}
             >
               Hi, My name is Tay.
-              <br /> This is a place between me and you.
-              <br /> I'm here to learn how to talk like you.
-            </p>
+              <br />
+              This is a place between together and you.
+              <br />
+              I'm here to learn how to talk like you.
+            </Typing>
           </Bubble>
           <img
             className="tay"

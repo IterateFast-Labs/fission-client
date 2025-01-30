@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { Timing } from '@/components/timing';
+import { Timing } from '@/components/animation/timing';
 import { sleep } from '@/lib/utils/sleep';
+
+const FADE_OUT_DURATION_SECOND = 0.5;
 
 export interface SplashProps {
   logo: React.ReactNode;
@@ -43,12 +45,18 @@ export function withSplash<P>(
 ) {
   return function (props: P & React.Attributes) {
     const [loaded, setLoaded] = useState(false);
+    const [splashVisible, setSplashVisible] = useState(true);
 
     const onLoadingWithSleep = async () => {
       if (typeof onLoading === 'function') {
         await onLoading();
       }
-      await sleep(3);
+
+      await sleep(2);
+
+      setSplashVisible(false);
+
+      await sleep(FADE_OUT_DURATION_SECOND);
     };
 
     useEffect(() => {
@@ -57,14 +65,15 @@ export function withSplash<P>(
           setLoaded(true);
         })
         .catch(() => {
+          // TODO: Handle error
           setLoaded(true);
         });
     }, []);
 
     return (
       <>
-        <Splash {...splashProps} className={loaded ? 'hidden' : ''} />
-        <Component {...props} />
+        <Splash {...splashProps} className={splashVisible ? '' : 'hidden'} />
+        <Component appLoaded={loaded} {...props} />
       </>
     );
   };
@@ -106,6 +115,6 @@ const SplashContainer = styled.div<{
     pointer-events: none;
   }
 
-  transition: opacity 0.6s;
-  transition-timing-function: steps(5, end);
+  transition: opacity ${FADE_OUT_DURATION_SECOND}s;
+  transition-timing-function: steps(4, end);
 `;

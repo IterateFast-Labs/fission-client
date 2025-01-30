@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Hourglass } from 'react95';
 
+import { Timing, TimingFrame } from '@/components/animation/timing';
 import { RootContainer } from '@/components/layout';
-import { Timing, TimingFrame } from '@/components/timing';
 import { useSettingStore } from '@/global-state/setting-store';
 import { BootingConsole } from '@/kernel/auth/components/booting-console';
 import { LogOnWindow } from '@/kernel/auth/components/log-on-window';

@@ -16,7 +16,7 @@ enum STEP {
   RESULT = 'RESULT',
 }
 
-function TayAppPage() {
+function TayAppPage({ appLoaded }: { appLoaded: boolean }) {
   const navigate = useNavigate();
   const [step, setStep] = useState<STEP>(STEP.GATE);
 
@@ -33,7 +33,9 @@ function TayAppPage() {
           />
 
           <StyledContent>
-            {step === STEP.GATE && <Gate onStart={handleStart} />}
+            {step === STEP.GATE && (
+              <Gate onStart={handleStart} appLoaded={appLoaded} />
+            )}
             {step === STEP.LABEL && (
               <div>
                 <button onClick={() => setStep(STEP.RESULT)}>Result</button>

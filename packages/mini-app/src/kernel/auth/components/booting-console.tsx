@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
-import { Blink } from '@/components/blink';
-import { Timing, TimingFrame } from '@/components/timing';
+import { Blink } from '@/components/animation/blink';
+import { Timing, TimingFrame } from '@/components/animation/timing';
 import { TelegramInitStatus, useTelegram } from '@/lib/hook/use-telegram';
 
 export function BootingConsole({
