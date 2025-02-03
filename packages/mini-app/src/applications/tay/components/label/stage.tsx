@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Hourglass } from 'react95';
+import { Button, Hourglass } from 'react95';
 import styled from 'styled-components';
 
 import { BaseContent } from '@/components/layout';
@@ -11,14 +11,17 @@ import {
 } from '@/requests/data-labeling';
 
 import { TayTalkingFrame } from '../tay-talking-frame';
+import Error from './error';
 import { OptionList } from './option-list';
 
 export function Stage({
   datasetId,
   onDetermineOption,
+  onErrorBackClick,
 }: {
   datasetId: string;
   onDetermineOption: () => void;
+  onErrorBackClick: () => void;
 }) {
   const { data: datasetDetail, status } = useDatasetDetail({
     datasetId,
@@ -54,10 +57,10 @@ export function Stage({
   return (
     <>
       <StyledBody>
-        {status === 'pending' && <Loading />}
         {status === 'success' && (
           <>
             <TayTalkingFrame
+              height={230}
               startTalking={status === 'success'}
               onAnimationEnd={() => {
                 setTayTalking(false);
@@ -67,11 +70,23 @@ export function Stage({
             </TayTalkingFrame>
           </>
         )}
+
+        {status === 'error' && (
+          <Error
+            message={'Failed to get dataset\nPlease try again later.'}
+            button={
+              <Button onClick={onErrorBackClick} size="sm">
+                Back
+              </Button>
+            }
+          />
+        )}
+        {status === 'pending' && <Loading />}
       </StyledBody>
       <StyledAction className={tayTalking ? 'talking' : ''}>
         {status === 'success' && (
           <OptionList
-            option={datasetDetail.dataSetOption}
+            option={datasetDetail!.dataSetOption}
             onOptionClick={handleOptionClick}
           />
         )}

@@ -134,15 +134,11 @@ const StyledParagraph = styled.p<{
   .char {
     display: inline;
     position: relative;
-
     opacity: ${(props) => (props.$skipped ? 1 : 0)};
     min-width: 0;
-
     animation-name: ${(props) => (props.$skipped ? 'none' : typing)};
-
     animation-duration: 0;
     animation-play-state: ${(props) => props.$animationPlayState};
-
     animation-fill-mode: forwards;
     animation-delay: calc(
       (var(--char-index) + 1) * ${(props) => props.$delayPerChar}s

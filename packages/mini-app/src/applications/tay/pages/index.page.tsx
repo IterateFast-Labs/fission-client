@@ -15,6 +15,7 @@ import {
 
 import { Gate } from '../components/gate';
 import { Label } from '../components/label';
+import { Result } from '../components/label/result';
 import { PageContainer, StyledContent, StyledWindow } from './index.style';
 
 enum STEP {
@@ -61,7 +62,7 @@ function TayAppPage({ appLoaded }: { appLoaded: boolean }) {
       queryKey: ['dataset', 'campaign', campaignId],
     });
 
-    setStep(STEP.GATE);
+    setStep(STEP.RESULT);
   };
 
   return (
@@ -95,9 +96,7 @@ function TayAppPage({ appLoaded }: { appLoaded: boolean }) {
               />
             )}
             {step === STEP.RESULT && (
-              <div>
-                <button onClick={() => setStep(STEP.GATE)}>Back</button>
-              </div>
+              <Result onConfirm={() => setStep(STEP.GATE)} />
             )}
           </StyledContent>
         </StyledWindow>

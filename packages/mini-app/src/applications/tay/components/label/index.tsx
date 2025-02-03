@@ -21,13 +21,10 @@ export function Label({
 
   const [index, setIndex] = useState<number>(0);
 
-  if (status === 'success' && !datasetIdList.length) {
-    return <Empty onBackClick={onBackClick} />;
-  }
+  const isEmpty = status === 'success' && !datasetIdList.length;
 
-  if (status === 'pending') {
-    // intentionally left blank
-    // because it already loaded when user enter the gate screen
+  if (isEmpty) {
+    return <Empty onBackClick={onBackClick} />;
   }
 
   return (
@@ -39,6 +36,7 @@ export function Label({
         <p className="description">Please check the question and answer it.</p>
       </BaseContent.Header>
       <Stage
+        onErrorBackClick={onBackClick}
         datasetId={datasetIdList![index]?.id}
         onDetermineOption={() => {
           if (index + 1 === datasetIdList!.length) {

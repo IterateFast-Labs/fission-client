@@ -7,14 +7,16 @@ import { Typing } from '@/components/animation/typing';
 export function TayTalkingFrame({
   startTalking,
   children,
+  height,
   onAnimationEnd,
 }: {
   startTalking: boolean;
+  height?: number;
   children: React.ReactNode;
   onAnimationEnd?: () => void;
 }) {
   return (
-    <StyledFrame variant="field">
+    <StyledFrame variant="field" height={height}>
       <Bubble className="bubble">
         <Typing
           animationPlayState={startTalking ? 'running' : 'paused'}
@@ -38,9 +40,11 @@ export function TayTalkingFrame({
   );
 }
 
-const StyledFrame = styled(Frame)`
+const StyledFrame = styled(Frame)<{
+  height?: number;
+}>`
   width: 100%;
-  height: 230px;
+  height: ${({ height }) => height || 230}px;
   position: relative;
 
   .bubble {
