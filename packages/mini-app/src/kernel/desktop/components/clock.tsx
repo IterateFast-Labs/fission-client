@@ -8,8 +8,7 @@ export function Clock() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (ref.current) {
-        const date = new Date();
-        ref.current.innerText = date.toLocaleTimeString('en-US', {
+        ref.current.innerText = new Date().toLocaleTimeString('en-US', {
           hour: 'numeric',
           minute: '2-digit',
         });
@@ -23,7 +22,12 @@ export function Clock() {
 
   return (
     <StyledFrame variant="status">
-      <p ref={ref}>0:00 PM</p>
+      <p ref={ref}>
+        {new Date().toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: '2-digit',
+        })}
+      </p>
     </StyledFrame>
   );
 }

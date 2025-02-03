@@ -19,7 +19,12 @@ export function DesktopPage() {
         </DesktopMain>
         <DesktopBottom>
           <AppBar position="relative">
-            <Toolbar style={{ justifyContent: 'space-between' }}>
+            <Toolbar
+              style={{
+                justifyContent: 'space-between',
+                paddingBottom: '0.5rem',
+              }}
+            >
               <StartMenu />
               <Clock />
             </Toolbar>
