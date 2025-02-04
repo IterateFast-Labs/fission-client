@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
 import tayCharacter from '@/applications/tay/assets/tay.svg';
-import { LogoImage } from '@/components/logo';
+import { LogoImage, LogoTypo } from '@/components/logo';
 import { useAuthStore } from '@/global-state/auth-store';
 import { useClickOutside } from '@/lib/hook/use-click-outside';
 
@@ -28,47 +28,84 @@ export function StartMenu() {
 
   return (
     <div ref={listRef}>
-      <StyledStartMenu onClick={() => setStartMenuOpen((prev) => !prev)}>
+      <StyledStartMenuButton onClick={() => setStartMenuOpen((prev) => !prev)}>
         <LogoImage width={20} height={20} />
         <span>Start</span>
-      </StyledStartMenu>
+      </StyledStartMenuButton>
       {isStartMenuOpen && (
-        <StyledMenuList>
-          <div className="main">
-            <StyledMenuListItem
-              onClick={() =>
-                handleClickMenu(() => navigate('/application/tay'))
-              }
-            >
-              <img src={tayCharacter} width={32} height={32} />
-              <span>Tay</span>
-            </StyledMenuListItem>
-          </div>
-          <div className="bottom">
-            <Separator />
-            <StyledMenuListItem onClick={handleShutDown}>
-              <Computer3 width={32} height={32} />
-              <span>Shut Down</span>
-            </StyledMenuListItem>
-          </div>
-        </StyledMenuList>
+        <StyledMenu>
+          <LogoTypo
+            className="logo"
+            width={274 / 2}
+            height={38 / 2}
+            fill="white"
+          />
+          <StyledMenuList>
+            <div className="main">
+              <StyledMenuListItem
+                onClick={() =>
+                  handleClickMenu(() => navigate('/application/tay'))
+                }
+              >
+                <img src={tayCharacter} width={32} height={32} />
+                <span>Tay</span>
+              </StyledMenuListItem>
+            </div>
+            <div className="bottom">
+              <Separator />
+              <StyledMenuListItem onClick={handleShutDown}>
+                <Computer3 width={32} height={32} />
+                <span>Shut Down</span>
+              </StyledMenuListItem>
+            </div>
+          </StyledMenuList>
+        </StyledMenu>
       )}
     </div>
   );
 }
 
-const StyledStartMenu = styled(Button)`
+const StyledStartMenuButton = styled(Button)`
   gap: 0.5rem;
 `;
 
-const StyledMenuList = styled(MenuList)`
+const StyledMenu = styled.div`
   position: absolute;
-  bottom: calc(100% - 4px);
+  bottom: calc(100% + 2px);
   left: 2px;
-  width: 200px;
-  min-height: 300px;
+  width: 220px;
+  height: auto;
+  z-index: 1000;
+
+  .logo {
+    position: absolute;
+    z-index: 1;
+    transform: rotate(-90deg) translateY(100%);
+    transform-origin: top left;
+    left: -10px;
+    bottom: -8px;
+    opacity: 0.6;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: 28px;
+    background: linear-gradient(180deg, blue, black);
+  }
+`;
+
+const StyledMenuList = styled(MenuList)`
   display: flex;
   flex-direction: column;
+  padding-left: 32px;
+  height: 100%;
+  min-height: 320px;
 
   .main {
     flex-grow: 1;
