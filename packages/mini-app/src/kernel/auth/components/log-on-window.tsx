@@ -10,7 +10,7 @@ import { useAuthStore } from '@/global-state/auth-store';
 import { useSettingStore } from '@/global-state/setting-store';
 import { useToastStore } from '@/global-state/toast-store';
 import { TelegramInitStatus, useTelegram } from '@/lib/hook/use-telegram';
-import { useLoginWithTelegram } from '@/requests/auth-telegram';
+import { useLoginWithTelegram } from '@/requests/auth';
 
 export function LogOnWindow() {
   const { setAccessToken } = useAuthStore();

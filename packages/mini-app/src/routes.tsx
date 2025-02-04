@@ -32,10 +32,6 @@ const routeList: RouteObject[] = [
   },
 ];
 
-// const router =
-//   import.meta.env.VITE_ENVIRONMENT === 'development'
-//     ? createBrowserRouter(routeList)
-//     : createBrowserRouter(routeList);
 const router = createBrowserRouter(routeList);
 
 export function Routes() {

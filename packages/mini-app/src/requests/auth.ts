@@ -43,3 +43,10 @@ export function useLoginWithTelegram() {
 export async function logout() {
   await client.delete('/auth/logout');
 }
+
+export function useLogout() {
+  return useMutation({
+    mutationFn: logout,
+    mutationKey: ['auth', 'logout'],
+  });
+}
