@@ -23,7 +23,7 @@ export function TimingFrame({
   return _displayed ? <>{children}</> : null;
 }
 
-export const fadeIn = keyframes`
+const fadeIn = keyframes`
 from {
   opacity: 0;
 }
