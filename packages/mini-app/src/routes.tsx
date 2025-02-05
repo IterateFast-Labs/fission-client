@@ -10,11 +10,13 @@ const routeList: RouteObject[] = [
     lazy: async () => ({
       Component: (await import('./kernel/pages/start.page')).StartPage,
     }),
+    HydrateFallback: () => <div></div>,
     errorElement: <ErrorBoundary />,
   },
   {
     path: '/desktop',
     element: <AuthRequiredRoutes />,
+    HydrateFallback: () => <div></div>,
     children: [
       {
         path: '/desktop',
@@ -28,6 +30,7 @@ const routeList: RouteObject[] = [
   {
     path: '/application',
     element: <AuthRequiredRoutes />,
+    HydrateFallback: () => <div></div>,
     children: [...applicationRoutes],
   },
 ];
