@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from 'react';
+import { ComponentPropsWithRef, memo } from 'react';
 import styled from 'styled-components';
 
 export function LogoTypo({
@@ -30,7 +30,7 @@ const SVGTYPO = styled.svg`
   aspect-ratio: 274 / 38;
 `;
 
-export function LogoImage({
+export const LogoImage = memo(function LogoImage({
   ref,
   className,
   style,
@@ -69,4 +69,4 @@ export function LogoImage({
       />
     </svg>
   );
-}
+});

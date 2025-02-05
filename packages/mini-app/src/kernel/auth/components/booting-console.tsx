@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 import { Blink } from '@/components/animation/blink';
 import { Timing, TimingFrame } from '@/components/animation/timing';
 import { TelegramInitStatus, useTelegram } from '@/lib/hook/use-telegram';
 
-export function BootingConsole({
+export const BootingConsole = memo(function BootingConsole({
   onBootingConsoleEnd,
 }: {
   onBootingConsoleEnd: () => void;
@@ -129,7 +130,7 @@ export function BootingConsole({
       </TimingFrame>
     </ConsoleContainer>
   );
-}
+});
 
 const cursorRoll = keyframes`
   0% {

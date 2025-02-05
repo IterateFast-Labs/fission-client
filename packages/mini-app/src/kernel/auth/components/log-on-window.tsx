@@ -1,5 +1,6 @@
 import { Inetcpl1305 } from '@react95/icons';
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
+import React from 'react';
 import { Button, Checkbox, Window, WindowContent } from 'react95';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
@@ -12,7 +13,7 @@ import { useToastStore } from '@/global-state/toast-store';
 import { TelegramInitStatus, useTelegram } from '@/lib/hook/use-telegram';
 import { useLoginWithTelegram } from '@/requests/auth';
 
-export function LogOnWindow() {
+export const LogOnWindow = React.memo(function LogOnWindow() {
   const { setAccessToken } = useAuthStore();
   const { setSkipBootConsole, skipBootConsole } = useSettingStore();
   const navigate = useNavigate();
@@ -87,7 +88,7 @@ export function LogOnWindow() {
       </StyledWindow>
     </WindowContainer>
   );
-}
+});
 
 const WindowContainer = styled.div`
   width: calc(100% - 3rem);

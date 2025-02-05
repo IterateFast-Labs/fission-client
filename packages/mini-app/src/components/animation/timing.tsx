@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-export function TimingFrame({
+export const TimingFrame = memo(function TimingFrame({
   start = 0,
   display,
   children,
@@ -21,7 +21,7 @@ export function TimingFrame({
   }, [display, start]);
 
   return _displayed ? <>{children}</> : null;
-}
+});
 
 const fadeIn = keyframes`
 from {
