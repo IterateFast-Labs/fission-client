@@ -1,8 +1,9 @@
-import { Button, Monitor } from 'react95';
-import styled from 'styled-components';
+import { Button } from 'react95';
 
 import tayLearning from '@/applications/tay/assets/tay-learning.webp';
 import { BaseContent } from '@/components/layout';
+
+import { StyledAction, StyledBody, StyledMonitor } from './result.style';
 
 export function Result({ onConfirm }: { onConfirm: () => void }) {
   return (
@@ -31,26 +32,3 @@ export function Result({ onConfirm }: { onConfirm: () => void }) {
     </BaseContent>
   );
 }
-
-const StyledBody = styled(BaseContent.Body)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledAction = styled(BaseContent.Action)`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const StyledMonitor = styled(Monitor)`
-  .screen {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: ${({ theme }) => theme.desktopBackground};
-  }
-`;

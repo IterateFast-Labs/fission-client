@@ -1,9 +1,8 @@
 import { Inetcpl1305 } from '@react95/icons';
-import { memo, useCallback } from 'react';
+import { useCallback } from 'react';
 import React from 'react';
-import { Button, Checkbox, Window, WindowContent } from 'react95';
+import { Button, Checkbox } from 'react95';
 import { useNavigate } from 'react-router';
-import styled from 'styled-components';
 
 import { FissionMonitor } from '@/components/monitor';
 import { WindowHeader } from '@/components/react95/window';
@@ -12,6 +11,14 @@ import { useSettingStore } from '@/global-state/setting-store';
 import { useToastStore } from '@/global-state/toast-store';
 import { TelegramInitStatus, useTelegram } from '@/lib/hook/use-telegram';
 import { useLoginWithTelegram } from '@/requests/auth';
+
+import {
+  ButtonContainer,
+  StyledWindow,
+  StyledWindowContent,
+  SubAction,
+  WindowContainer,
+} from './log-on-window.style';
 
 export const LogOnWindow = React.memo(function LogOnWindow() {
   const { setAccessToken } = useAuthStore();
@@ -89,37 +96,3 @@ export const LogOnWindow = React.memo(function LogOnWindow() {
     </WindowContainer>
   );
 });
-
-const WindowContainer = styled.div`
-  width: calc(100% - 3rem);
-`;
-
-const StyledWindow = styled(Window)`
-  display: block;
-  width: 100%;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const StyledWindowContent = styled(WindowContent)`
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  align-items: center;
-  padding-top: 3rem;
-`;
-
-const ButtonContainer = styled.div`
-  & > button {
-    width: 230px;
-  }
-`;
-
-const SubAction = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0.5rem;
-`;

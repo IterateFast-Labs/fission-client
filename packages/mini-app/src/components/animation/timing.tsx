@@ -13,11 +13,16 @@ export const TimingFrame = memo(function TimingFrame({
   const [_displayed, setDisplayed] = useState<boolean>(display);
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
     if (display) {
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         setDisplayed(true);
       }, start * 1000);
     }
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [display, start]);
 
   return _displayed ? <>{children}</> : null;
@@ -29,7 +34,6 @@ from {
 }
 to {
   opacity: 1;
-  
 }
 `;
 

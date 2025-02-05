@@ -1,38 +1,8 @@
-import React, { useCallback } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import { useToastStore } from '@/global-state/toast-store';
+import { WindowCloseButton } from '../react95/window';
 
-import { WindowCloseButton } from './react95/window';
-
-export interface ToastProps {
-  id: string;
-  message: React.ReactNode;
-  duration?: number; // seconds
-}
-
-export function Toast({ message, duration = 4, id }: ToastProps) {
-  const { removeToast } = useToastStore();
-
-  const handleRemoveToast = useCallback(() => {
-    removeToast(id);
-  }, [id, removeToast]);
-
-  return (
-    <ToastBox
-      key={id}
-      $duration={duration}
-      onAnimationEnd={() => handleRemoveToast()}
-    >
-      <div className="inside">{message}</div>
-      <StyledCloseButton onClick={() => handleRemoveToast()} size="sm">
-        Close
-      </StyledCloseButton>
-    </ToastBox>
-  );
-}
-
-const StyledCloseButton = styled(WindowCloseButton)`
+export const StyledCloseButton = styled(WindowCloseButton)`
   position: absolute;
   top: 0;
   right: 0;
@@ -51,7 +21,7 @@ const toastAnimation = keyframes`
     }
 `;
 
-const ToastBox = styled.div<{ $duration: number }>`
+export const ToastBox = styled.div<{ $duration: number }>`
   position: relative;
   overflow: hidden;
   border: 8px solid;
@@ -73,21 +43,7 @@ const ToastBox = styled.div<{ $duration: number }>`
   }
 `;
 
-export function ToastList() {
-  const { toasts } = useToastStore();
-
-  return (
-    <ToastBoxList>
-      <div className="toast-list">
-        {toasts.map((toast) => (
-          <Toast key={toast.id} {...toast} />
-        ))}
-      </div>
-    </ToastBoxList>
-  );
-}
-
-const ToastBoxList = styled.div`
+export const ToastBoxList = styled.div`
   position: fixed;
   z-index: 1000;
   top: 0;

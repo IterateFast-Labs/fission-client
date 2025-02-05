@@ -1,12 +1,12 @@
 import { Computer3 } from '@react95/icons';
-import { MenuList, MenuListItem, Separator } from 'react95';
+import { Separator } from 'react95';
 import { useNavigate } from 'react-router';
-import styled from 'styled-components';
 
 import tayCharacter from '@/applications/tay/assets/tay.svg';
 import { useAuthStore } from '@/global-state/auth-store';
 import { useToastStore } from '@/global-state/toast-store';
 
+import { StyledMenuList, StyledMenuListItem } from './index.style';
 import MenuContainer from './menu-container';
 
 export function StartMenu() {
@@ -47,30 +47,3 @@ export function StartMenu() {
     </MenuContainer>
   );
 }
-
-const StyledMenuList = styled(MenuList)`
-  display: flex;
-  flex-direction: column;
-  padding-left: 32px;
-  height: 100%;
-  min-height: 320px;
-
-  .main {
-    flex-grow: 1;
-  }
-
-  .bottom {
-    flex-shrink: 0;
-  }
-`;
-
-const StyledMenuListItem = styled(MenuListItem).attrs({
-  className: 'menu-list-item',
-})`
-  justify-content: flex-start;
-  gap: 0.5rem;
-
-  img {
-    image-rendering: pixelated;
-  }
-`;

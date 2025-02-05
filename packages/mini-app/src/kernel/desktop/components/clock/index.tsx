@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { Frame } from 'react95';
-import styled from 'styled-components';
+
+import { StyledFrame } from './index.style';
 
 export function Clock() {
   const ref = useRef<HTMLParagraphElement>(null);
@@ -31,14 +31,3 @@ export function Clock() {
     </StyledFrame>
   );
 }
-
-const StyledFrame = styled(Frame)`
-  height: 36px;
-  padding: 0 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  p {
-    font-size: 1.125rem;
-  }
-`;

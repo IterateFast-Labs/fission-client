@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import { Button, Hourglass } from 'react95';
-import styled from 'styled-components';
+import { Button } from 'react95';
 
-import { BaseContent } from '@/components/layout';
 import { useToastStore } from '@/global-state/toast-store';
 import {
   InputOption,
@@ -13,6 +11,8 @@ import {
 import { TayTalkingFrame } from '../tay-talking-frame';
 import Error from './error';
 import { OptionList } from './option-list';
+import { StyledAction, StyledBody } from './result.style';
+import { Loading } from './stage.style';
 
 export function Stage({
   datasetId,
@@ -94,33 +94,3 @@ export function Stage({
     </>
   );
 }
-
-const Loading = styled(({ className }: { className?: string }) => (
-  <div className={className}>
-    <Hourglass />
-    <p>Loading</p>
-  </div>
-))`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  text-align: center;
-`;
-
-const StyledBody = styled(BaseContent.Body)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const StyledAction = styled(BaseContent.Action)`
-  transition: opacity 2s;
-  &.talking {
-    opacity: 0.2;
-    pointer-events: none;
-  }
-`;

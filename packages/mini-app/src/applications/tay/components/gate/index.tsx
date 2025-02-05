@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Button } from 'react95';
-import styled from 'styled-components';
 
 import { BaseContent } from '@/components/layout';
 import { useUnlabelledDatasetsByCampaignId } from '@/requests/data-labeling';
 
 import { TayTalkingFrame } from '../tay-talking-frame';
+import { StyledAction, StyledBody } from './index.styled';
 
 export function Gate({
   appLoaded,
@@ -60,23 +60,3 @@ export function Gate({
     </BaseContent>
   );
 }
-
-const StyledBody = styled(BaseContent.Body)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const StyledAction = styled(BaseContent.Action)`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-  transition: opacity 2s;
-
-  &.talking {
-    opacity: 20%;
-    pointer-events: none;
-  }
-`;
