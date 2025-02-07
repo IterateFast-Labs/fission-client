@@ -43,7 +43,9 @@ const GlobalStyles = createGlobalStyle`
     min-height: 100svh;
     -webkit-font-smoothing: antialiased;
 
-    background: ${({ theme }) => theme.desktopBackground};
+    background: black;
+
+    overflow-x: auto;
   }
 `;
 

@@ -21,4 +21,8 @@ export const StyledHeader = styled(WindowHeader)`
 export const StyledContent = styled(WindowContent)`
   height: 100%;
   overflow-y: auto;
+
+  & > * {
+    min-height: 420px;
+  }
 `;
