@@ -6,7 +6,7 @@ import { useMyPoint } from '@/requests/user';
 
 export const Point = memo(function Point() {
   const { data: point } = useMyPoint();
-  const pointRef = useRef(0);
+  const pointRef = useRef(point);
 
   useEffect(() => {
     if (point) {
@@ -17,7 +17,7 @@ export const Point = memo(function Point() {
 
   if (!point) return null;
 
-  const pointDiff = point - pointRef.current;
+  const pointDiff = point - (pointRef.current || point);
 
   return (
     <StyledGroupBox label="Your Point" $sparkle={pointDiff > 0}>
