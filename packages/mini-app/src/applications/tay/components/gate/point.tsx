@@ -28,13 +28,13 @@ export const Point = memo(function Point() {
 
 const sparkle = keyframes`
     0% {
-        background-color: transparent;
+        border-color: white;
     }
     50% {
-        background-color: #0008ff;
+        border-color: blue;
     }
     100% {
-        background-color: transparent;
+        border-color: white;
     }
 `;
 
