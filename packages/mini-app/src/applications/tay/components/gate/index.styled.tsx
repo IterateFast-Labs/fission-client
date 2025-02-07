@@ -4,6 +4,7 @@ import { BaseContent } from '@/components/layout';
 
 export const StyledBody = styled(BaseContent.Body)`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;

@@ -1,6 +1,8 @@
+import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { Button } from 'react95';
 
+import { useAuthStore } from '@/global-state/auth-store';
 import { useToastStore } from '@/global-state/toast-store';
 import {
   InputOption,
@@ -23,11 +25,13 @@ export function Stage({
   onDetermineOption: () => void;
   onErrorBackClick: () => void;
 }) {
+  const queryClient = useQueryClient();
   const { data: datasetDetail, status } = useDatasetDetail({
     datasetId,
   });
 
   const { pushToast } = useToastStore();
+  const { accessToken } = useAuthStore();
 
   const { mutateAsync } = useDetermineDatasetOption({
     datasetId,
@@ -49,6 +53,11 @@ export function Stage({
       datasetId,
       option,
       campaignId: datasetDetail?.campaignId,
+    });
+
+    await queryClient.invalidateQueries({
+      exact: true,
+      queryKey: ['user', 'myPoint', accessToken],
     });
 
     onDetermineOption();
