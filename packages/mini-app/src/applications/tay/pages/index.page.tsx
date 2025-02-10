@@ -16,12 +16,14 @@ import {
 import { Gate } from '../components/gate';
 import { Label } from '../components/label';
 import { Result } from '../components/label/result';
+import { TayStatus } from '../components/status';
 import { PageContainer, StyledContent, StyledWindow } from './index.style';
 
 enum STEP {
   GATE = 'GATE',
   LABEL = 'LABEL',
   RESULT = 'RESULT',
+  STATUS = 'STATUS',
 }
 
 function TayAppPage({ appLoaded }: { appLoaded: boolean }) {
@@ -86,6 +88,7 @@ function TayAppPage({ appLoaded }: { appLoaded: boolean }) {
                 onStart={handleStart}
                 appLoaded={appLoaded}
                 campaignId={campaignId!}
+                onClickStatus={() => setStep(STEP.STATUS)}
               />
             )}
             {step === STEP.LABEL && (
@@ -97,6 +100,9 @@ function TayAppPage({ appLoaded }: { appLoaded: boolean }) {
             )}
             {step === STEP.RESULT && (
               <Result onConfirm={() => setStep(STEP.GATE)} />
+            )}
+            {step === STEP.STATUS && (
+              <TayStatus onBackClick={() => setStep(STEP.GATE)} />
             )}
           </StyledContent>
         </StyledWindow>

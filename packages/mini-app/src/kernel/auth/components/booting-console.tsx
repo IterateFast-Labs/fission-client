@@ -36,6 +36,7 @@ export const BootingConsole = memo(function BootingConsole({
           <Text>This version supports only Telegram</Text>
           <Text>CPU Intel 80386</Text>
           <Text>Base Memory Size : 640KB</Text>
+          <Text>Version : {import.meta.env.VITE_DEVOPS_VERSION}</Text>
         </Timing>
         <Timing start={1.4} duration={0.1}>
           <Text>#############################</Text>

@@ -12,10 +12,12 @@ export function Gate({
   appLoaded,
   onStart,
   campaignId,
+  onClickStatus,
 }: {
   appLoaded: boolean;
   onStart: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   campaignId: string;
+  onClickStatus: () => void;
 }) {
   const { data: datasetList } = useUnlabelledDatasetsByCampaignId({
     campaignId,
@@ -38,7 +40,7 @@ export function Gate({
         >
           Hi, My name is Tay.
           <br />
-          This is a place between together and you.
+          This is where together meets you.
           <br />
           {Boolean(datasetList?.length) &&
             'Please teach me instructions how to talk.'}
@@ -46,13 +48,13 @@ export function Gate({
             'you gave me a lot of instructions. Thank you! '}
           {!datasetList?.length && 'Keep in touch :3'}
         </TayTalkingFrame>
-
         <Point />
       </StyledBody>
       <StyledAction className={tayTalking ? 'talking' : ''}>
         <GateAction
           onStart={onStart}
           datasetList={datasetList?.map((dataset) => dataset.id) || []}
+          onClickStatus={onClickStatus}
         />
       </StyledAction>
     </BaseContent>

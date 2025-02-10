@@ -9,6 +9,7 @@ import styled, { keyframes } from 'styled-components';
 interface TypingProps extends ComponentPropsWithRef<'p'> {
   delayPerChar?: number;
   animationPlayState?: 'running' | 'paused';
+  skipable?: boolean;
   onAnimationEnd?: () => void;
 }
 
@@ -17,6 +18,7 @@ export function Typing({
   ref,
   delayPerChar = 0.02,
   animationPlayState = 'running',
+  skipable = true,
   onAnimationEnd,
   ...props
 }: TypingProps) {
@@ -89,6 +91,10 @@ export function Typing({
   };
 
   useEffect(() => {
+    if (!skipable) {
+      return;
+    }
+
     const handleClick = () => {
       setSkipped(true);
       onAnimationEnd?.();

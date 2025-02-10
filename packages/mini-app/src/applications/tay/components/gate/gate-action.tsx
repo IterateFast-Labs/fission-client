@@ -3,9 +3,11 @@ import { Button } from 'react95';
 
 export const GateAction = memo(function GateAction({
   onStart,
+  onClickStatus,
   datasetList,
 }: {
   onStart: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClickStatus: () => void;
   datasetList: string[];
 }) {
   return (
@@ -18,6 +20,9 @@ export const GateAction = memo(function GateAction({
         disabled={!datasetList?.length}
       >
         {datasetList?.length ? 'Start' : 'I already collected enough data!'}
+      </Button>
+      <Button fullWidth size="lg" onClick={onClickStatus}>
+        Check Tay's status
       </Button>
     </>
   );
