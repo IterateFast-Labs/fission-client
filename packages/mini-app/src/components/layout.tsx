@@ -2,6 +2,8 @@ import { ComponentPropsWithRef } from 'react';
 import styled from 'styled-components';
 
 export const RootContainer = styled.div`
+  position: fixed;
+  inset: 0;
   max-width: 640px;
   min-width: 340px;
   margin: 0 auto;
