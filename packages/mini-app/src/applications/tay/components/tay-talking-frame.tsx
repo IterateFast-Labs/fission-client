@@ -10,15 +10,17 @@ export function TayTalkingFrame({
   height,
   onAnimationEnd,
   skipable,
+  className,
 }: {
   startTalking: boolean;
   height?: number;
   children: React.ReactNode;
   onAnimationEnd?: () => void;
   skipable?: boolean;
+  className?: string;
 }) {
   return (
-    <StyledFrame variant="field" height={height}>
+    <StyledFrame variant="field" height={height} className={className}>
       <Bubble className="bubble">
         <Typing
           skipable={skipable}

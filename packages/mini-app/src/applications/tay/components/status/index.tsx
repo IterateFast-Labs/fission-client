@@ -32,7 +32,7 @@ export function TayStatus({ onBackClick }: { onBackClick: () => void }) {
         <p className="description">Together And You</p>
       </BaseContent.Header>
       <BaseContent.Body>
-        <TayTalkingFrame
+        <StyledTayTalkingFrame
           key={questionIndex + status + data?.updatedAt}
           startTalking={questionIndex === 0 || status === 'success'}
           onAnimationEnd={() => setIsTayAnswering(false)}
@@ -42,7 +42,7 @@ export function TayStatus({ onBackClick }: { onBackClick: () => void }) {
             : status === 'success'
               ? data.message
               : 'I am thinking...'}
-        </TayTalkingFrame>
+        </StyledTayTalkingFrame>
       </BaseContent.Body>
       <StyledAction>
         <Button
@@ -75,4 +75,8 @@ const StyledAction = styled(BaseContent.Action)`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+`;
+
+const StyledTayTalkingFrame = styled(TayTalkingFrame)`
+  height: calc(100% - 2rem);
 `;

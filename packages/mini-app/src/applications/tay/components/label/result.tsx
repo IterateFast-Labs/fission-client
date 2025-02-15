@@ -22,8 +22,12 @@ export function Result({ onConfirm }: { onConfirm: () => void }) {
         </StyledMonitor>
       </StyledBody>
       <StyledAction>
-        <Button size="lg" fullWidth>
-          Tay 𝕏 (@lorem_ipsum)
+        <Button
+          size="lg"
+          fullWidth
+          onClick={() => window.open('https://x.com/Tay_n_You', '_blank')}
+        >
+          Tay 𝕏 (@Tay_n_You)
         </Button>
         <Button size="lg" fullWidth onClick={onConfirm}>
           Confirm
