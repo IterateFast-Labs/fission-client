@@ -43,10 +43,9 @@ export function Gate({
           This is where together meets you.
           <br />
           {Boolean(datasetList?.length) &&
-            'Please teach me instructions how to talk.'}
-          {!datasetList?.length &&
-            'you gave me a lot of instructions. Thank you! '}
-          {!datasetList?.length && 'Keep in touch :3'}
+            'Please teach me how you’d like me to respond.'}
+          {!datasetList?.length && 'Thank you for training me >_<'}
+          {!datasetList?.length && 'Let’s Keep in touch :3'}
         </TayTalkingFrame>
         <Point />
       </StyledBody>

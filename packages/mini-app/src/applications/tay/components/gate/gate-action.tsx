@@ -12,7 +12,7 @@ export const GateAction = memo(function GateAction({
 }) {
   return (
     <>
-      <p>Please teach TAY how to talk</p>
+      <p>Please teach TAY how to respond</p>
       <Button
         fullWidth
         size="lg"

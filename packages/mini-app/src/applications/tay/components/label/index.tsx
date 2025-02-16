@@ -33,7 +33,9 @@ export function Label({
         <h2 className="title">
           Question {index + 1} of {datasetIdList!.length}
         </h2>
-        <p className="description">Please check the question and answer it.</p>
+        <p className="description">
+          Please review the question and select your answer.
+        </p>
       </BaseContent.Header>
       <Stage
         onErrorBackClick={onBackClick}

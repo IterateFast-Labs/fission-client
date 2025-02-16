@@ -11,7 +11,7 @@ export function Result({ onConfirm }: { onConfirm: () => void }) {
       <BaseContent.Header>
         <h2 className="title">Thank you for your response!</h2>
         <p className="description">
-          Tay is collecting more data to learn. Please check our 𝕏
+          TAY is collecting more data for training. Stay updated on 𝕏
         </p>
       </BaseContent.Header>
       <StyledBody>

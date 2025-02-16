@@ -54,10 +54,7 @@ export const LogOnWindow = React.memo(function LogOnWindow() {
     pushToast({
       id: `skip-boot-console-${prev ? 'off' : 'on'}`,
       message: (
-        <>
-          Next time, <br />
-          the boot screen will {prev ? '' : <u>NOT</u>} be displayed.
-        </>
+        <>The boot screen will {prev ? '' : <u>NOT</u>} appear on restart</>
       ),
     });
   }, [skipBootConsole]);
