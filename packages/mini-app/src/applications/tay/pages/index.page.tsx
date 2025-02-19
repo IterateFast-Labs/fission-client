@@ -5,6 +5,16 @@ import { useNavigate } from 'react-router';
 
 import { withSplash } from '@/applications/splash';
 import tayCharacter from '@/applications/tay/assets/tay.svg';
+import { Gate } from '@/applications/tay/components/gate';
+import { Label } from '@/applications/tay/components/label';
+import { Result } from '@/applications/tay/components/label/result';
+import { TayStatus } from '@/applications/tay/components/status';
+import {
+  PageContainer,
+  StyledContent,
+  StyledWindow,
+} from '@/applications/tay/pages/index.style';
+import { STEP } from '@/applications/tay/type';
 import { RootContainer } from '@/components/layout';
 import { WindowCloseButton, WindowHeader } from '@/components/react95/window';
 import { useToastStore } from '@/global-state/toast-store';
@@ -12,19 +22,6 @@ import {
   useAgentCampainId,
   useUnlabelledDatasetsByCampaignId,
 } from '@/requests/data-labeling';
-
-import { Gate } from '../components/gate';
-import { Label } from '../components/label';
-import { Result } from '../components/label/result';
-import { TayStatus } from '../components/status';
-import { PageContainer, StyledContent, StyledWindow } from './index.style';
-
-enum STEP {
-  GATE = 'GATE',
-  LABEL = 'LABEL',
-  RESULT = 'RESULT',
-  STATUS = 'STATUS',
-}
 
 function TayAppPage({ appLoaded }: { appLoaded: boolean }) {
   const queryClient = useQueryClient();

@@ -1,23 +1,10 @@
 import { useState } from 'react';
 
+import { Scene } from '@/applications/tay/type';
 import { BaseContent } from '@/components/layout';
 import { useAgentStatus } from '@/requests/agent';
 
 import { VisualNovelInterface } from './visual-novel-interface';
-
-export type Scene = {
-  sceneId: string;
-  background: string;
-  character: string;
-  characterStyle?: React.CSSProperties;
-  whoIsTalking: string;
-  dialog: string | (() => Promise<string>);
-  select: {
-    text: string;
-    onClick: () => void;
-  }[];
-  onNext: () => void;
-};
 
 export function TayStatus({ onBackClick }: { onBackClick: () => void }) {
   const { data } = useAgentStatus({
@@ -52,7 +39,7 @@ export function TayStatus({ onBackClick }: { onBackClick: () => void }) {
             : '...',
       select: [
         {
-          text: data?.qna[qnaIdx].question || '...',
+          text: data?.qna?.[qnaIdx].question || '...',
           onClick: () => {
             setSceneId('question-talkback');
           },
@@ -74,7 +61,7 @@ export function TayStatus({ onBackClick }: { onBackClick: () => void }) {
         opacity: 0.2,
       },
       whoIsTalking: 'You',
-      dialog: data?.qna[qnaIdx].question || '...',
+      dialog: data?.qna?.[qnaIdx].question || '...',
       select: [],
       onNext: () => {
         setSceneId('answer');
