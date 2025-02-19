@@ -44,6 +44,7 @@ export const Timing = styled(
     className,
     onAnimationEnd,
     children,
+    style,
   }: {
     className?: string;
     onAnimationEnd?: (event: React.AnimationEvent<HTMLDivElement>) => void;
@@ -52,6 +53,7 @@ export const Timing = styled(
     duration: number; // second
     blank?: boolean;
     fullWidth?: boolean;
+    style?: React.CSSProperties;
   }) => {
     const wrappedOnAnimationEnd = (
       event: React.AnimationEvent<HTMLDivElement>,
@@ -65,7 +67,11 @@ export const Timing = styled(
     };
 
     return (
-      <div className={className} onAnimationEnd={wrappedOnAnimationEnd}>
+      <div
+        className={className}
+        onAnimationEnd={wrappedOnAnimationEnd}
+        style={style}
+      >
         {children}
       </div>
     );

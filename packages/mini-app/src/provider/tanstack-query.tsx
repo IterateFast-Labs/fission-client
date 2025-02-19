@@ -6,7 +6,10 @@ export function TanstackQueryProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { VITE_ENVIRONMENT } = import.meta.env;
+  const isDev = import.meta.env.VITE_ENVIRONMENT === 'development';
+  const isDisabled =
+    import.meta.env.VITE_PROVIDER_DISABLE_TANSTACK_DEVTOOLS === 'true';
+  const devtoolEnabled = isDev && !isDisabled;
 
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -20,9 +23,7 @@ export function TanstackQueryProvider({
 
   return (
     <QueryClientProvider client={queryClient}>
-      {VITE_ENVIRONMENT === 'development' && (
-        <ReactQueryDevtools initialIsOpen={false} />
-      )}
+      {devtoolEnabled && <ReactQueryDevtools initialIsOpen={false} />}
       {children}
     </QueryClientProvider>
   );
