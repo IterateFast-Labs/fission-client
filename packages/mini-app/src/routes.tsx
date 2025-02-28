@@ -28,6 +28,20 @@ const routeList: RouteObject[] = [
     errorElement: <ErrorBoundary />,
   },
   {
+    path: '/account',
+    element: <AuthRequiredRoutes />,
+    HydrateFallback: () => <div></div>,
+    children: [
+      {
+        path: '/account',
+        lazy: async () => ({
+          Component: (await import('./kernel/pages/account.page')).AccountPage,
+        }),
+      },
+    ],
+    errorElement: <ErrorBoundary />,
+  },
+  {
     path: '/application',
     element: <AuthRequiredRoutes />,
     HydrateFallback: () => <div></div>,

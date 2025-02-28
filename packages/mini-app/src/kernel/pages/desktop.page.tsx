@@ -1,7 +1,6 @@
 import { AppBar, Toolbar } from 'react95';
 
 import { RootContainer } from '@/components/layout';
-import { Clock } from '@/kernel/desktop/components/clock';
 import { DesktopApplications } from '@/kernel/desktop/components/desktop-applications';
 import {
   DesktopBottom,
@@ -9,6 +8,7 @@ import {
   DesktopMain,
 } from '@/kernel/desktop/components/layout';
 import { StartMenu } from '@/kernel/desktop/components/start-menu';
+import { SystemTray } from '@/kernel/desktop/components/system-tray';
 
 export function DesktopPage() {
   return (
@@ -26,7 +26,7 @@ export function DesktopPage() {
               }}
             >
               <StartMenu />
-              <Clock />
+              <SystemTray />
             </Toolbar>
           </AppBar>
         </DesktopBottom>

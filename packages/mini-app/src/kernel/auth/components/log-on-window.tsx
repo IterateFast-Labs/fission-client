@@ -37,7 +37,7 @@ export const LogOnWindow = React.memo(function LogOnWindow() {
     const { accessToken } = await mutateAsync({
       telegramId: telegramUser!.id,
       telegramName:
-        (telegramUser?.firstName || '') + (telegramUser?.lastName || ''),
+        (telegramUser?.firstName || '') + ' ' + (telegramUser?.lastName || ''),
       referralCode: '',
       telegramHandle: telegramUser?.username,
     });

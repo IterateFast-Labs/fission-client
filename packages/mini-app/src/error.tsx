@@ -54,4 +54,9 @@ const MessageContainer = styled.div`
     font-size: 1.5rem;
     font-weight: bold;
   }
+
+  pre {
+    white-space: pre-wrap;
+    break-word: break-all;
+  }
 `;

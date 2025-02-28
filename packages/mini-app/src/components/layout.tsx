@@ -2,14 +2,11 @@ import { ComponentPropsWithRef } from 'react';
 import styled from 'styled-components';
 
 export const RootContainer = styled.div`
-  position: fixed;
-  inset: 0;
   max-width: 640px;
   min-width: 340px;
   margin: 0 auto;
-  height: 100svh;
+  min-height: 100svh;
   padding-bottom: 0.25rem;
-  background-color: ${({ theme }) => theme.desktopBackground};
 `;
 
 const BaseContentContainer = styled(

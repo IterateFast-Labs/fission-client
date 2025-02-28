@@ -10,7 +10,7 @@ export interface UserDetail {
   createdAt: string;
   updatedAt: string;
   telegramId: string;
-  userName: string | null;
+  nickname: string | null;
   userType: 'WORLD' | 'TELEGRAM';
   telegramHandle: string | null;
   walletAddress: string | null;

@@ -16,6 +16,7 @@
     "@tanstack/react-query-devtools": "^5.64.1",
     "@telegram-apps/sdk": "^2.5.1",
     "axios": "^1.7.9",
+    "dayjs": "^1.11.13",
     "disable-devtool": "^0.3.8",
     "jwt-decode": "^4.0.0",
     "react": "^19.0.0",

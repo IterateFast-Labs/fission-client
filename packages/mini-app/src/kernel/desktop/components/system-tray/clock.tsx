@@ -1,8 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 
-import { StyledFrame } from './index.style';
-
-export function Clock() {
+export const Clock = memo(() => {
   const ref = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
@@ -21,13 +19,11 @@ export function Clock() {
   }, []);
 
   return (
-    <StyledFrame variant="status">
-      <p ref={ref}>
-        {new Date().toLocaleTimeString('en-US', {
-          hour: 'numeric',
-          minute: '2-digit',
-        })}
-      </p>
-    </StyledFrame>
+    <p ref={ref}>
+      {new Date().toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+      })}
+    </p>
   );
-}
+});
