@@ -2,8 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 
 import { useAuthStore } from '@/global-state/auth-store';
 
+import { ListResponse, PaginationParams } from './common-type';
 import { client } from './config/axios-instance';
-import { ListResponse, PaginationParams } from './types/list';
 
 export interface UserDetail {
   id: string;

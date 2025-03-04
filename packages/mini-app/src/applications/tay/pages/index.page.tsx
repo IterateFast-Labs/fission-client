@@ -14,14 +14,14 @@ import {
   StyledContent,
   StyledWindow,
 } from '@/applications/tay/pages/index.style';
+import {
+  useAgentCampainId,
+  useUnlabelledDatasetsByCampaignId,
+} from '@/applications/tay/request';
 import { STEP } from '@/applications/tay/type';
 import { RootContainer } from '@/components/layout';
 import { WindowCloseButton, WindowHeader } from '@/components/react95/window';
 import { useToastStore } from '@/global-state/toast-store';
-import {
-  useAgentCampainId,
-  useUnlabelledDatasetsByCampaignId,
-} from '@/requests/data-labeling';
 
 function TayAppPage({ appLoaded }: { appLoaded: boolean }) {
   const queryClient = useQueryClient();

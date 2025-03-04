@@ -2,13 +2,13 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { Button } from 'react95';
 
-import { useAuthStore } from '@/global-state/auth-store';
-import { useToastStore } from '@/global-state/toast-store';
 import {
   InputOption,
   useDatasetDetail,
   useDetermineDatasetOption,
-} from '@/requests/data-labeling';
+} from '@/applications/tay/request';
+import { useAuthStore } from '@/global-state/auth-store';
+import { useToastStore } from '@/global-state/toast-store';
 
 import { TayTalkingFrame } from '../tay-talking-frame';
 import Error from './error';

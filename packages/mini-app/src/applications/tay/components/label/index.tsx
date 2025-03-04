@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
+import { useUnlabelledDatasetsByCampaignId } from '@/applications/tay/request';
 import { BaseContent } from '@/components/layout';
-import { useUnlabelledDatasetsByCampaignId } from '@/requests/data-labeling';
 
 import Empty from './empty';
 import { Stage } from './stage';

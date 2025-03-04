@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
+import { useUnlabelledDatasetsByCampaignId } from '@/applications/tay/request';
 import { BaseContent } from '@/components/layout';
-import { useUnlabelledDatasetsByCampaignId } from '@/requests/data-labeling';
 
 import { TayTalkingFrame } from '../tay-talking-frame';
 import { GateAction } from './gate-action';

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
+import { useAgentStatus } from '@/applications/tay/request';
 import { Scene } from '@/applications/tay/type';
 import { BaseContent } from '@/components/layout';
-import { useAgentStatus } from '@/requests/agent';
 
 import { VisualNovelInterface } from './visual-novel-interface';
 

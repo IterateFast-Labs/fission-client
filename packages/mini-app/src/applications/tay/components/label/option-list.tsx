@@ -1,7 +1,7 @@
 import { Button } from 'react95';
 import styled from 'styled-components';
 
-import { DatasetDetail, InputOption } from '@/requests/data-labeling';
+import { DatasetDetail, InputOption } from '@/applications/tay/request';
 
 export function OptionList({
   option,
