@@ -7,7 +7,7 @@ export const PageContainer = styled.div`
 
 export const StyledWindow = styled(Window)`
   width: 100%;
-  height: 100%;
+  height: 100svh;
   display: flex;
   flex-direction: column;
 `;

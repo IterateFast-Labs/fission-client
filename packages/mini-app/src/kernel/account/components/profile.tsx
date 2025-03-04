@@ -33,11 +33,11 @@ export function Profile() {
             <TableDataCell>@{myInfo?.telegramHandle}</TableDataCell>
           </TableRow>
           <TableRow>
-            <TableHeadCell>Registered 🗓️</TableHeadCell>
+            <TableHeadCell>Registered</TableHeadCell>
             <TableDataCell>{dayjs(myInfo?.createdAt).fromNow()}</TableDataCell>
           </TableRow>
           <TableRow>
-            <TableHeadCell>Updated 🗓️</TableHeadCell>
+            <TableHeadCell>Updated</TableHeadCell>
             <TableDataCell>{dayjs(myInfo?.updatedAt).fromNow()}</TableDataCell>
           </TableRow>
           <TableRow>
