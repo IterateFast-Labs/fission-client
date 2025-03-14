@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Tab, TabBody, Tabs } from 'react95';
 import styled from 'styled-components';
 
@@ -35,7 +35,11 @@ export function InfoTabs() {
         ))}
       </StyledTabs>
       <TabBody>
-        {tabs.map((tab, index) => (selectedTab === index ? tab.body : null))}
+        {tabs.map((tab, index) =>
+          selectedTab === index ? (
+            <Fragment key={index}>{tab.body}</Fragment>
+          ) : null,
+        )}
       </TabBody>
     </Container>
   );

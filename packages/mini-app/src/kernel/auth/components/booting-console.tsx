@@ -23,7 +23,7 @@ export const BootingConsole = memo(function BootingConsole({
     <ConsoleContainer>
       <TimingFrame display={true}>
         <Timing start={0.3} duration={0.2}>
-          <LogoTypo fill="#2fff00" width={137} height={19} />
+          <LogoTypo fill="#2fff00" />
         </Timing>
         <Timing start={0.5} duration={0.1}>
           <Text>#############################</Text>

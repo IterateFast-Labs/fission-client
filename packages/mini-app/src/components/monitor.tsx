@@ -13,15 +13,15 @@ export function FissionMonitor() {
             duration={1}
             fill="#fffb00"
             delay={0.4}
-            width={100}
+            width={111}
           />
           <GlitchyLogoTypo
             duration={0.4}
             fill="#e600c0"
             delay={0.2}
-            width={100}
+            width={111}
           />
-          <GlitchyLogoTypo duration={0.8} fill="#2fff00" width={100} />
+          <GlitchyLogoTypo duration={0.8} fill="#2fff00" width={111} />
         </GlitchyContainer>
       </div>
     </StyledMonitor>
@@ -43,7 +43,8 @@ const StyledMonitor = styled(Monitor)`
 
 const GlitchyContainer = styled.div`
   position: relative;
-  width: 100%;
+  width: 111px;
+  height: 32px;
 `;
 
 const GlitchyLogoTypo = styled(LogoTypo)<{

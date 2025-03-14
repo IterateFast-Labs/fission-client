@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-import { LogoImage, LogoTypo } from '@/components/logo';
+import { LogoImage } from '@/components/logo';
 import { useClickOutside } from '@/lib/hook/use-click-outside';
 
 import { StyledMenu, StyledStartMenuButton } from './menu-container.style';
@@ -26,17 +26,7 @@ function MenuContainer({
         <LogoImage width={20} height={20} />
         <span>Start</span>
       </StyledStartMenuButton>
-      {isStartMenuOpen && (
-        <StyledMenu>
-          <LogoTypo
-            className="logo"
-            width={274 / 2}
-            height={38 / 2}
-            fill="white"
-          />
-          {children(onMenuClick)}
-        </StyledMenu>
-      )}
+      {isStartMenuOpen && <StyledMenu>{children(onMenuClick)}</StyledMenu>}
     </div>
   );
 }

@@ -40,7 +40,7 @@ export function Gate({
         >
           Hi, My name is Tay.
           <br />
-          This is where together meets you.
+          This is where we meet together.
           <br />
           {Boolean(datasetList?.length) &&
             'Please teach me how you’d like me to respond. '}

@@ -25,7 +25,11 @@ export const LogOnWindow = React.memo(function LogOnWindow() {
   const { setSkipBootConsole, skipBootConsole } = useSettingStore();
   const navigate = useNavigate();
   const { mutateAsync } = useLoginWithTelegram();
-  const { telegramUser, status: telegramInitStatus } = useTelegram();
+  const {
+    telegramUser,
+    status: telegramInitStatus,
+    startParams,
+  } = useTelegram();
   const { pushToast } = useToastStore();
 
   const handleStart = async () => {
@@ -38,13 +42,14 @@ export const LogOnWindow = React.memo(function LogOnWindow() {
       telegramId: telegramUser!.id,
       telegramName:
         (telegramUser?.firstName || '') + ' ' + (telegramUser?.lastName || ''),
-      referralCode: '',
+      referralCode: startParams?.referralCode || '',
       telegramHandle: telegramUser?.username,
     });
 
     setAccessToken(accessToken);
 
-    navigate('/desktop');
+    // Navigate to desktop or deep link
+    navigate(startParams?.deepLink || '/desktop');
   };
 
   const handleSkipBootConsole = useCallback(() => {

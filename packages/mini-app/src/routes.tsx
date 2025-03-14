@@ -47,6 +47,15 @@ const routeList: RouteObject[] = [
     HydrateFallback: () => <div></div>,
     children: [...applicationRoutes],
   },
+  {
+    path: '/bluescreen',
+    lazy: async () => ({
+      Component: (await import('./kernel/pages/bluescreen.page'))
+        .BluescreenPage,
+    }),
+    HydrateFallback: () => <div></div>,
+    errorElement: <ErrorBoundary />,
+  },
 ];
 
 const router = createBrowserRouter(routeList);

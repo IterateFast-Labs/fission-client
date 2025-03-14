@@ -51,7 +51,13 @@ const GlobalStyles = createGlobalStyle`
 
 export function React95Provider({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider theme={original}>
+    <ThemeProvider
+      theme={{
+        ...original,
+        desktopBackground: '#05094B',
+        headerBackground: '#05094B',
+      }}
+    >
       <GlobalStyles />
       {children}
     </ThemeProvider>

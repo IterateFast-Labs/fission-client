@@ -1,4 +1,9 @@
-import { init, viewport } from '@telegram-apps/sdk';
+import {
+  ERR_UNKNOWN_ENV,
+  TypedError,
+  init,
+  viewport,
+} from '@telegram-apps/sdk';
 import React from 'react';
 
 export function TelegramAppProvider({
@@ -6,14 +11,26 @@ export function TelegramAppProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const location = window.location;
+  const isBluescreen = location.pathname.includes('/bluescreen');
+  const isProd = import.meta.env.VITE_ENVIRONMENT === 'production';
+
   React.useEffect(() => {
     try {
       init();
       viewport.expand();
     } catch (error) {
-      console.error('Failed to initialize Telegram App SDK', error);
+      let errorType = '';
+
+      if (error instanceof TypedError) {
+        errorType = error.type;
+      }
+
+      if (errorType === ERR_UNKNOWN_ENV && !isBluescreen && isProd) {
+        location.href = '/bluescreen';
+      }
     }
-  }, []);
+  }, [location]);
 
   return <>{children}</>;
 }
