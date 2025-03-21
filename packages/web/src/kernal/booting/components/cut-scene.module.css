@@ -1,0 +1,18 @@
+.roll {
+  overflow: hidden;
+
+  animation-name: move;
+  animation-duration: var(--duration, 1s);
+  animation-timing-function: steps(var(--frame-count, 1), end);
+
+  animation-fill-mode: forwards;
+}
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}

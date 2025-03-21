@@ -33,7 +33,7 @@ export const BootingConsole = memo(function BootingConsole({
             Copyright (c) {new Date().getFullYear()}
             {'  '}Fission
           </Text>
-          <Text>This version supports only Telegram</Text>
+          <Text>This app can only be used in the Telegram environment</Text>
           <Text>CPU Intel 80386</Text>
           <Text>Base Memory Size : 640KB</Text>
           <Text>Version : {import.meta.env.VITE_DEVOPS_VERSION}</Text>
