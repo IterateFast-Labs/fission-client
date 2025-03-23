@@ -33,7 +33,7 @@ function Booting() {
                 <br />
                 Copyright (c) {new Date().getFullYear()}, Fission
                 <br />
-                Version : 0.0.0
+                Version : {process.env.NEXT_PUBLIC_VERSION || '...'}
                 <br />
                 NVIDIA A100, 16 Processor(s)
                 <br />

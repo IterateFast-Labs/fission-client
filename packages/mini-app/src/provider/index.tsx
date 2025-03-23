@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
+import { AlertProvider } from './alert';
 import { DisableDevtoolProvider } from './disable-devtool';
 import { ErudaProvider } from './eruda';
 import { GoogleAnalytics4Provider } from './ga4';
@@ -14,10 +15,12 @@ export function Provider({ children }: { children: ReactNode }) {
       <TanstackQueryProvider>
         <React95Provider>
           <ToastProvider>
-            <DisableDevtoolProvider />
-            <TelegramAppProvider>
-              <GoogleAnalytics4Provider>{children}</GoogleAnalytics4Provider>
-            </TelegramAppProvider>
+            <AlertProvider>
+              <DisableDevtoolProvider />
+              <TelegramAppProvider>
+                <GoogleAnalytics4Provider>{children}</GoogleAnalytics4Provider>
+              </TelegramAppProvider>
+            </AlertProvider>
           </ToastProvider>
         </React95Provider>
       </TanstackQueryProvider>

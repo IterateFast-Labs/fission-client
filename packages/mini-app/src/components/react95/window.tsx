@@ -8,9 +8,9 @@ export function WindowHeader({
   headerTitle,
   button,
 }: {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   headerTitle: string;
-  button: React.ReactNode;
+  button?: React.ReactNode;
 }) {
   const isIconExist = Boolean(icon);
   const isHeaderTitleExist = Boolean(headerTitle);

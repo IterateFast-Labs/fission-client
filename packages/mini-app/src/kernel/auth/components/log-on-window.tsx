@@ -1,4 +1,5 @@
 import { Inetcpl1305 } from '@react95/icons';
+import axios from 'axios';
 import { useCallback } from 'react';
 import React from 'react';
 import { Button, Checkbox } from 'react95';
@@ -38,18 +39,36 @@ export const LogOnWindow = React.memo(function LogOnWindow() {
       return;
     }
 
-    const { accessToken } = await mutateAsync({
-      telegramId: telegramUser!.id,
-      telegramName:
-        (telegramUser?.firstName || '') + ' ' + (telegramUser?.lastName || ''),
-      referralCode: startParams?.referralCode || '',
-      telegramHandle: telegramUser?.username,
-    });
+    try {
+      const { accessToken } = await mutateAsync({
+        telegramId: telegramUser!.id,
+        telegramName:
+          (telegramUser?.firstName || '') +
+          ' ' +
+          (telegramUser?.lastName || ''),
+        referralCode: startParams?.referralCode || '',
+        telegramHandle: telegramUser?.username,
+      });
 
-    setAccessToken(accessToken);
+      setAccessToken(accessToken);
 
-    // Navigate to desktop or deep link
-    navigate(startParams?.deepLink || '/desktop');
+      // Navigate to desktop or deep link
+      navigate(startParams?.deepLink || '/desktop');
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        pushToast({
+          id: `login-error-${error.response?.status}`,
+          message: error.response?.data?.message,
+        });
+
+        return;
+      }
+
+      pushToast({
+        id: 'login-failed',
+        message: 'Login failed',
+      });
+    }
   };
 
   const handleSkipBootConsole = useCallback(() => {

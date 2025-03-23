@@ -1,4 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
 import { useState } from 'react';
 import { Button } from 'react95';
 
@@ -49,18 +50,33 @@ export function Stage({
       return;
     }
 
-    await mutateAsync({
-      datasetId,
-      option,
-      campaignId: datasetDetail?.campaignId,
-    });
+    try {
+      await mutateAsync({
+        datasetId,
+        option,
+        campaignId: datasetDetail?.campaignId,
+      });
 
-    await queryClient.invalidateQueries({
-      exact: true,
-      queryKey: ['user', 'myPoint', accessToken],
-    });
+      await queryClient.invalidateQueries({
+        exact: true,
+        queryKey: ['user', 'myPoint', accessToken],
+      });
 
-    onDetermineOption();
+      onDetermineOption();
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        pushToast({
+          id: `tay-dataset-option-failed-${error.response?.status}`,
+          message: error.response?.data?.message || error.response?.statusText,
+        });
+        return;
+      }
+
+      pushToast({
+        id: 'tay-dataset-option-failed',
+        message: 'Failed to update response, \nplease try again later.',
+      });
+    }
   };
 
   return (
