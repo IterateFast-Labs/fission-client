@@ -13,6 +13,7 @@ dist-ssr
 *.local
 
 packages/mini-app/.env
+packages/web/.env
 .env
 .env.local
 .env.development.local
@@ -22,3 +23,5 @@ packages/mini-app/.env
 .env.development
 
 internal
+
+packages/web/deploy
