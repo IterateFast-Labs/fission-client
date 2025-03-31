@@ -47,7 +47,7 @@ export default async function Home() {
                 className={buttonVariants({
                   variant: 'outline',
                 })}
-                href="https://discord.gg/7KYf23ke9x"
+                href="https://discord.com/invite/XFWtmDDf8s"
               >
                 Discord
               </Link>
