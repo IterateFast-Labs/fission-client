@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "mini-app": "pnpm --filter @fission-client/mini-app",
+    "web": "pnpm --filter @fission-client/web",
     "dev": "pnpm run -r dev"
   },
   "keywords": [],
